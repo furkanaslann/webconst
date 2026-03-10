@@ -1,0 +1,40 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-gray-900 text-white">
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="md:col-span-2">
+        <h3 class="text-2xl font-bold mb-4">Webconst</h3>
+        <p class="text-gray-400 mb-4">
+          Modern web teknolojileri ile işinizi dijital dünyaya taşıyoruz.
+          Profesyonel web geliştirme ve danışmanlık hizmetleri.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Hızlı Linkler</h4>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Anasayfa</a></li>
+          <li><a href="/hizmetler" class="text-gray-400 hover:text-white transition-colors">Hizmetler</a></li>
+          <li><a href="/hakkimizda" class="text-gray-400 hover:text-white transition-colors">Hakkımızda</a></li>
+          <li><a href="/iletisim" class="text-gray-400 hover:text-white transition-colors">İletişim</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-lg font-semibold mb-4">İletişim</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li>📍 İstanbul, Türkiye</li>
+          <li>📧 info@webconst.com</li>
+          <li>📞 +90 212 123 45 67</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+      <p>&copy; {currentYear} Webconst. Tüm hakları saklıdır.</p>
+    </div>
+  </div>
+</footer>

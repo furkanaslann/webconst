@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../presentation/layouts/BaseLayout.astro';
+import Section from '../presentation/components/ui/Section.astro';
+import { services } from '../core/domain/types/service.types';
+---
+
+<BaseLayout
+  title="Hizmetler - Webconst"
+  description="Webconst'in sunduğu profesyonel web geliştirme, tasarım ve SEO hizmetlerini keşfedin."
+>
+  <Section bgColor="gray">
+    <div class="py-20">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Hizmetlerimiz
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          İşinizi dijital dünyada öne çıkarmak için kapsamlı web çözümleri sunuyoruz.
+          Her projede kalite ve müşteri memnuniyetini ön planda tutuyoruz.
+        </p>
+      </div>
+
+      <div class="space-y-24">
+        {services.map((service, index) => (
+          <div id={service.slug} class={`grid md:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+            <div class={index % 2 === 1 ? 'md:order-2' : ''}>
+              <div class="aspect-square bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl flex items-center justify-center">
+                <span class="text-9xl">
+                  {service.icon === 'code' && '💻'}
+                  {service.icon === 'design' && '🎨'}
+                  {service.icon === 'search' && '🔍'}
+                </span>
+              </div>
+            </div>
+
+            <div class={index % 2 === 1 ? 'md:order-1' : ''}>
+              <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                {service.title}
+              </h2>
+              <p class="text-lg text-gray-600 mb-6">
+                {service.description}
+              </p>
+
+              {service.slug === 'web-gelistirme' && (
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-primary-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    Astro, React, Vue.js gibi modern framework'ler
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-primary-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    TypeScript ile type-safe geliştirme
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-primary-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    Tailwind CSS ile responsive tasarımlar
+                  </li>
+                </ul>
+              )}
+
+              {service.slug === 'ui-ux-tasarim' && (
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-primary-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    Kullanıcı odaklı tasarım yaklaşıımı
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-primary-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    Figma, Adobe XD ile prototipleme
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-primary-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    Erişilebilirlik (WCAG) standartları
+                  </li>
+                </ul>
+              )}
+
+              {service.slug === 'seo-optimizasyonu' && (
+                <ul class="space-y-3 text-gray-600">
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-primary-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    Teknik SEO analizi ve optimizasyonu
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-primary-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    Core Web Vitals iyileştirmeleri
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-primary-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                    </svg>
+                    Sitemap ve robots.txt yapılandırması
+                  </li>
+                </ul>
+              )}
+
+              <a
+                href="/iletisim"
+                class="inline-block mt-6 bg-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-700 transition-colors"
+              >
+                Teklif Al
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

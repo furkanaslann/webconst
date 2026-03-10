@@ -1,0 +1,21 @@
+---
+interface Props {
+  class?: string;
+  bgColor?: 'white' | 'gray' | 'primary';
+}
+
+const {
+  class: className = '',
+  bgColor = 'white',
+} = Astro.props;
+
+const bgClasses = {
+  white: 'bg-white',
+  gray: 'bg-gray-50',
+  primary: 'bg-primary-50',
+};
+---
+
+<section class={`${bgClasses[bgColor]} ${className}`}>
+  <slot />
+</section>

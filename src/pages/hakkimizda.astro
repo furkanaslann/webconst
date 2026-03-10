@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../presentation/layouts/BaseLayout.astro';
+import Section from '../presentation/components/ui/Section.astro';
+---
+
+<BaseLayout
+  title="Hakkımızda - Webconst"
+  description="Webconst olarak modern web teknolojileri ile müşterilerimize dijital dünyada rekabet avantajı sağlıyoruz."
+>
+  <Section bgColor="gray">
+    <div class="py-20">
+      <div class="max-w-4xl mx-auto text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Hakkımızda
+        </h1>
+        <p class="text-xl text-gray-600">
+          Dijital dünyada fark yaratmak için buradayız
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">
+            Biz Kimiz?
+          </h2>
+          <p class="text-gray-600 mb-4">
+            Webconst, modern web teknolojileri ile işletmelerin dijital dönüşümüne
+            katkıda bulunan bir teknoloji şirketidir. Astro, React, TypeScript gibi
+            güncel teknolojileri kullanarak hızlı, güvenilir ve ölçeklenebilir web
+            çözümleri sunuyoruz.
+          </p>
+          <p class="text-gray-600 mb-4">
+            Her projede müşteri memnuniyetini ve kaliteyi ön planda tutarak,
+            işletmelerin ihtiyaçlarına özel çözümler geliştiriyoruz.
+          </p>
+          <p class="text-gray-600">
+            Referans aldığımız adimproje.com.tr sitesinin profesyonel yapısını
+            esas alarak, müşterilerimize benzer kalitede ancak kendi özgün
+            tasarımımızı yansıtan web siteleri hazırlıyoruz.
+          </p>
+        </div>
+
+        <div class="aspect-square bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl flex items-center justify-center">
+          <span class="text-9xl">👥</span>
+        </div>
+      </div>
+
+      <div class="mb-20">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+          Değerlerimiz
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">💎</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Kalite</h3>
+            <p class="text-gray-600">
+              Her projede en yüksek kalite standartlarını uyguluyoruz
+            </p>
+          </div>
+
+          <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">🤝</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Güven</h3>
+            <p class="text-gray-600">
+              Müşterilerimizle şeffaf ve dürüst ilişkiler kuruyoruz
+            </p>
+          </div>
+
+          <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl">🚀</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">İnovasyon</h3>
+            <p class="text-gray-600">
+              Sürekli öğrenerek en yeni teknolojileri takip ediyoruz
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">
+          Teknoloji Stack'imiz
+        </h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+              <span class="text-2xl font-bold text-orange-600">A</span>
+            </div>
+            <p class="font-medium">Astro</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+              <span class="text-2xl font-bold text-blue-600">R</span>
+            </div>
+            <p class="font-medium">React</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+              <span class="text-2xl font-bold text-blue-700">TS</span>
+            </div>
+            <p class="font-medium">TypeScript</p>
+          </div>
+
+          <div class="text-center">
+            <div class="w-16 h-16 bg-cyan-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+              <span class="text-2xl font-bold text-cyan-600">TW</span>
+            </div>
+            <p class="font-medium">Tailwind</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
