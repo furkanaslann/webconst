@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../presentation/layouts/BaseLayout.astro';
+import Section from '../presentation/components/ui/Section.astro';
+import References from '../presentation/components/References.astro';
+import type { Reference } from '../presentation/components/References.astro';
+
+const references: Reference[] = [
+  {
+    id: '1',
+    title: 'Mimarsinan Plaza Güçlendirme',
+    location: 'Kayseri',
+    year: '2023',
+    category: 'Güçlendirme',
+    description: '5 katlı plazanın deprem yönetmeliğine uygun olarak güçlendirilmesi projesi.',
+  },
+  {
+    id: '2',
+    title: 'Erciyes Üniversitesi Havuz Yalıtım',
+    location: 'Kayseri',
+    year: '2023',
+    category: 'Su Yalıtım',
+    description: 'Kapalı yüzme havuzunun polyurea sistemle su yalıtım uygulaması.',
+  },
+  {
+    id: '3',
+    title: 'Organize Sanayi Epoxy Zemin',
+    location: 'Kayseri',
+    year: '2022',
+    category: 'Zemin Kaplama',
+    description: '5000m² fabrika alanına 3mm kalınlığında epoxy zemin kaplama uygulaması.',
+  },
+  {
+    id: '4',
+    title: 'Özel Hastane Teras Yalıtım',
+    location: 'Nevşehir',
+    year: '2022',
+    category: 'Su Yalıtım',
+    description: 'Hastane teras katının sıcak ve soğuk su yalıtımı uygulaması.',
+  },
+  {
+    id: '5',
+    title: 'AVM Otopark Zemin Kaplama',
+    location: 'Kayseri',
+    year: '2021',
+    category: 'Zemin Kaplama',
+    description: 'Alışveriş merkezi otoparkına polüretan zemin kaplama ve çizgi uygulaması.',
+  },
+  {
+    id: '6',
+    title: 'Site Perde Duvar Yalıtım',
+    location: 'Yozgat',
+    year: '2021',
+    category: 'Su Yalıtım',
+    description: 'LuxSite perde duvarların dranajlı su yalıtım uygulaması.',
+  },
+  {
+    id: '7',
+    title: 'Fabrika Güçlendirme Projesi',
+    location: 'Kayseri',
+    year: '2020',
+    category: 'Güçlendirme',
+    description: 'Endüstriyel binanın taşıyıcı sisteminin güçlendirilmesi.',
+  },
+  {
+    id: '8',
+    title: 'Spor Salonu Zemin',
+    location: 'Sivas',
+    year: '2020',
+    category: 'Zemin Kaplama',
+    description: 'Kapalı spor salonuna kendinden yaylı zemin kaplama uygulaması.',
+  },
+  {
+    id: '9',
+    title: 'Siteler Temel Yalıtım',
+    location: 'Kayseri',
+    year: '2019',
+    category: 'Su Yalıtım',
+    description: 'Toplu konut projesinde temel perde duvar yalıtım uygulaması.',
+  },
+];
+---
+
+<BaseLayout
+  title="Referanslar - Webconst"
+  description="Webconst'in tamamladığı projeleri ve müşteri referanslarını inceleyin. 500+ başarılı proje ile yapı sektöründe güvenilir çözüm ortağınız."
+>
+  <Section bgColor="gray">
+    <div class="py-20 px-10">
+      <div class="max-w-4xl mx-auto text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Referans Projelerimiz
+        </h1>
+        <p class="text-xl text-gray-600">
+          20+ yıllık tecrübemizle 500'ü aşkın projeyi başarıyla tamamladık
+        </p>
+      </div>
+
+      <div class="mb-12">
+        <div class="flex flex-wrap gap-3 justify-center">
+          <button class="filter-btn active px-4 py-2 rounded-lg bg-accent-500 text-white font-medium" data-filter="all">
+            Tümü
+          </button>
+          <button class="filter-btn px-4 py-2 rounded-lg bg-white text-gray-700 font-medium hover:bg-accent-100" data-filter="guclendirme">
+            Güçlendirme
+          </button>
+          <button class="filter-btn px-4 py-2 rounded-lg bg-white text-gray-700 font-medium hover:bg-accent-100" data-filter="yalitim">
+            Su Yalıtım
+          </button>
+          <button class="filter-btn px-4 py-2 rounded-lg bg-white text-gray-700 font-medium hover:bg-accent-100" data-filter="zemin">
+            Zemin Kaplama
+          </button>
+        </div>
+      </div>
+
+      <div id="references-grid">
+        <References references={references} />
+      </div>
+    </div>
+  </Section>
+
+  <Section bgColor="white">
+    <div class="py-20">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+          Başarı Rakamlarımız
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div class="w-20 h-20 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl font-bold text-accent-600">500+</span>
+            </div>
+            <p class="font-semibold text-gray-900">Tamamlanan Proje</p>
+          </div>
+          <div class="text-center">
+            <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl font-bold text-primary-600">20+</span>
+            </div>
+            <p class="font-semibold text-gray-900">Yıllık Tecrübe</p>
+          </div>
+          <div class="text-center">
+            <div class="w-20 h-20 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl font-bold text-secondary-600">100%</span>
+            </div>
+            <p class="font-semibold text-gray-900">Müşteri Memnuniyeti</p>
+          </div>
+          <div class="text-center">
+            <div class="w-20 h-20 bg-dark-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-3xl font-bold text-dark-600">50+</span>
+            </div>
+            <p class="font-semibold text-gray-900">Uzman Personel</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section bgColor="gray-600">
+    <div class="py-16 text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+        Sizin de Projeniz Hazır Mı?
+      </h2>
+      <p class="text-lg text-neutral-100 mb-6 max-w-2xl mx-auto">
+        Başarılı projelerimize bir yenisini eklemek için sabırsızlanıyoruz
+      </p>
+      <a
+        href="/iletisim"
+        class="inline-block bg-white text-primary-700 px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+      >
+        Teklif Alın
+      </a>
+    </div>
+  </Section>
+</BaseLayout>
+
+<script>
+  // Simple filter functionality
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach((btn) => {
+    const button = btn as HTMLElement;
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterBtns.forEach((b) => {
+        const btnElement = b as HTMLElement;
+        btnElement.classList.remove('bg-accent-500', 'text-white');
+        btnElement.classList.add('bg-white', 'text-gray-700');
+      });
+      // Add active class to clicked button
+      button.classList.remove('bg-white', 'text-gray-700');
+      button.classList.add('bg-accent-500', 'text-white');
+
+      const filter = button.dataset.filter;
+      // In a real implementation, you would filter the grid here
+      console.log('Filter:', filter);
+    });
+  });
+</script>

@@ -1,17 +1,18 @@
 ---
 interface Props {
-  class?: string;
-  bgColor?: 'white' | 'gray' | 'primary';
+  className?: string;
+  bgColor?: 'white' | 'gray' | 'gray-600' | 'primary';
 }
 
 const {
-  class: className = '',
+  className = '',
   bgColor = 'white',
 } = Astro.props;
 
 const bgClasses = {
   white: 'bg-white',
   gray: 'bg-gray-50',
+  'gray-600': 'bg-gray-600',
   primary: 'bg-primary-50',
 };
 ---

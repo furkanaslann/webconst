@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../presentation/layouts/BaseLayout.astro';
+import Section from '../presentation/components/ui/Section.astro';
+import FAQ from '../presentation/components/FAQ.astro';
+import type { FAQItem } from '../presentation/components/FAQ.astro';
+
+const faqs: FAQItem[] = [
+  {
+    id: '1',
+    question: 'Bina güçlendirme nedir ve neden gereklidir?',
+    answer: 'Bina güçlendirme, mevcut binaların deprem yönetmeliğine uygun hale getirilmesi işlemidir. Türkiye\'de deprem riski nedeniyle binaların taşıyıcı sistemlerinin güçlendirilmesi hem can güvenliği hem de yasal zorunluluk açısından gereklidir. 1999\'dan önce inşa edilmiş binalar için özellikle önemlidir.',
+    category: 'Güçlendirme',
+  },
+  {
+    id: '2',
+    question: 'Su yalıtım uygulamaları nerede yapılır?',
+    answer: 'Su yalıtım uygulaması temeller, teraslar, balkonlar, çatılar, havuzlar, ıslak zeminler (banyo, mutfak) ve perde duvarlarda yapılır. Su sızmasını önlemek ve binanın ömrünü uzatmak için kritik öneme sahiptir.',
+    category: 'Su Yalıtım',
+  },
+  {
+    id: '3',
+    question: 'Epoxy zemin kaplama nedir?',
+    answer: 'Epoxy zemin kaplama, reçine bazlı iki bileşenli bir kaplama sistemidir. Endüstriyel alanlar, fabrikalar, garajlar, depolar ve ticari alanlarda kullanılır. Çizilme, kimyasal etkilere ve aşınmaya karşı dayanıklıdır. Hijyenik, kolay temizlenebilir ve estetik bir zemin çözümüdür.',
+    category: 'Zemin Kaplama',
+  },
+  {
+    id: '4',
+    question: 'Güçlendirme projesi ne kadar sürer?',
+    answer: 'Proje süresi binanın büyüklüğüne, mevcut durumuna ve güçlendirme yöntemine göre değişmektedir. Küçük ölçekli bir bina için 2-3 ay, büyük ölçekli projelerde 6-12 ay sürebilmektedir. Detaylı inceleme sonrasında net süre verilebilir.',
+    category: 'Güçlendirme',
+  },
+  {
+    id: '5',
+    question: 'Yapı kimyasalları nerede kullanılır?',
+    answer: 'Yapı kimyasalları inşaatın birçok aşamasında kullanılır: silan/siloksan su itici olarak dış cephelerde, sızdırmazlık malzemeleri derzlerde, yapıştırıcılar seramik uygulamalarında, katkı maddeleri beton dayanımını artırmak için kullanılır.',
+    category: 'Yapı Kimyasalları',
+  },
+  {
+    id: '6',
+    question: 'Keşif ve teklif hizmeti ücretli mi?',
+    answer: 'Hayır, Kayseri ve çevresinde sunduğumuz keşif ve teklif hizmeti tamamen ücretsizdir. Uzman ekibimiz projenizi yerinde inceleyerek size detaylı rapor ve teklif sunar.',
+    category: 'Genel',
+  },
+  {
+    id: '7',
+    question: 'Zemin kaplama uygulaması ne kadar sürede kurur?',
+    answer: 'Kullanılan malzemeye ve ortam sıcaklığına göre değişmekle birlikte, epoxy zemin kaplamalar genellikle 24-48 saat içinde yürünebilir hale gelir. Tam sertleşme ve kimyasal dayanıklılık ise 7 gün içinde gerçekleşir.',
+    category: 'Zemin Kaplama',
+  },
+  {
+    id: '8',
+    question: 'Hizmet verdiğiniz bölgeler neresidir?',
+    answer: 'Merkezimiz Kayseri\'de olup, Kayseri ili genelinde ve çevre illerde (Nevşehir, Yozgat, Sivas vb.) hizmet veriyoruz. Projenin büyüklüğüne göre diğer illere de hizmet sunabiliyoruz.',
+    category: 'Genel',
+  },
+  {
+    id: '9',
+    question: 'Su yalıtım uygulamasının garantisi var mı?',
+    answer: 'Evet, kullandığımız malzemeler ve uygulama hizmetleri firmamız tarafından garantilidir. Malzeme ve uygulama türüne göre garanti süresi değişmektedir. Detaylı bilgi teklif aşamasında paylaşılmaktadır.',
+    category: 'Su Yalıtım',
+  },
+  {
+    id: '10',
+    question: 'Güçlendirme için neler gereklidir?',
+    answer: 'Öncelikle binanın rölev ölçüsü, statik projesi ve varsa zemin etüt raporları gereklidir. Bu belgelerle birlikte binanın mevcut durumu incelenir, laboratuvar testleri yapılır ve uygun güçlendirme projesi hazırlanır.',
+    category: 'Güçlendirme',
+  },
+];
+---
+
+<BaseLayout
+  title="Sıkça Sorulan Sorular - Webconst"
+  description="Webconst hizmetleri hakkında sıkça sorulan soruları ve cevapları inceleyin. Güçlendirme, su yalıtım, zemin kaplama ve yapı kimyasalları hakkında merak ettikleriniz."
+>
+  <Section bgColor="gray">
+    <div class="py-20">
+      <div class="max-w-4xl mx-auto text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          Sıkça Sorulan Sorular
+        </h1>
+        <p class="text-xl text-gray-600">
+          Hizmetlerimiz hakkında merak ettiğiniz soruların cevaplarını burada bulabilirsiniz
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Genel Sorular</h2>
+          <FAQ faqs={faqs.filter(f => f.category === 'Genel')} />
+        </div>
+
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Güçlendirme Çalışmaları</h2>
+          <FAQ faqs={faqs.filter(f => f.category === 'Güçlendirme')} />
+        </div>
+
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Su Yalıtım Hizmetleri</h2>
+          <FAQ faqs={faqs.filter(f => f.category === 'Su Yalıtım')} />
+        </div>
+
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Zemin Kaplama Sistemleri</h2>
+          <FAQ faqs={faqs.filter(f => f.category === 'Zemin Kaplama')} />
+        </div>
+
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Yapı Kimyasalları</h2>
+          <FAQ faqs={faqs.filter(f => f.category === 'Yapı Kimyasalları')} />
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section bgColor="white">
+    <div class="py-16">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+          Sorunuzun Cevabını Bulamadınız mı?
+        </h2>
+        <p class="text-gray-600 mb-6">
+          Projeleriniz hakkında daha fazla bilgi almak veya sorularınızı sormak için bizimle iletişime geçin
+        </p>
+        <a
+          href="/iletisim"
+          class="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-medium hover:bg-accent-600 transition-colors"
+        >
+          İletişime Geç
+        </a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

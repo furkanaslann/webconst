@@ -1,0 +1,82 @@
+---
+export interface FAQItem {
+  id: string;
+  question: string;
+  answer: string;
+  category?: string;
+}
+
+interface Props {
+  faqs: FAQItem[];
+}
+
+const { faqs } = Astro.props;
+---
+
+<div class="space-y-4">
+  {faqs.map((faq, index) => (
+    <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+      <button
+        class="faq-question w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+        aria-expanded="false"
+        data-faq-index={index}
+      >
+        <span class="font-medium text-gray-900 pr-4">{faq.question}</span>
+        <svg
+          class="faq-icon w-5 h-5 text-gray-500 flex-shrink-0 transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div class="faq-answer hidden px-6 pb-4">
+        <p class="text-gray-600">{faq.answer}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .faq-item[aria-expanded="true"] .faq-icon {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script define:vars={{ faqCount: faqs.length }}>
+  document.addEventListener('astro:page-load', () => {
+    const faqItems = document.querySelectorAll('.faq-question');
+
+    faqItems.forEach((button) => {
+      button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        const icon = button.querySelector('.faq-icon');
+        const parent = button.parentElement;
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+        // Close all other items
+        faqItems.forEach((otherButton) => {
+          if (otherButton !== button) {
+            otherButton.setAttribute('aria-expanded', 'false');
+            const otherAnswer = otherButton.nextElementSibling;
+            const otherIcon = otherButton.querySelector('.faq-icon');
+            otherAnswer?.classList.add('hidden');
+            otherIcon?.classList.remove('rotate-180');
+          }
+        });
+
+        // Toggle current item
+        if (isExpanded) {
+          button.setAttribute('aria-expanded', 'false');
+          answer?.classList.add('hidden');
+          icon?.classList.remove('rotate-180');
+        } else {
+          button.setAttribute('aria-expanded', 'true');
+          answer?.classList.remove('hidden');
+          icon?.classList.add('rotate-180');
+        }
+      });
+    });
+  });
+</script>
