@@ -1,5 +1,7 @@
 ---
 import Section from '../ui/Section.astro';
+import { Swiper, SwiperWrapper, SwiperSlide, SwiperPagination, SwiperButtonPrev, SwiperButtonNext } from 'astro-swiper';
+import { heroSlides } from '../../../core/constants/heroSlides';
 
 interface Props {
   title?: string;
@@ -9,6 +11,10 @@ interface Props {
   cta2Text?: string;
   cta2Link?: string;
   bgImage?: boolean;
+  enableSlider?: boolean;
+  autoplayDelay?: number;
+  showPagination?: boolean;
+  showNavigation?: boolean;
 }
 
 const {
@@ -19,6 +25,10 @@ const {
   cta2Text = 'Hizmetlerimiz',
   cta2Link = '/hizmetler',
   bgImage = true,
+  enableSlider = false,
+  autoplayDelay = 5000,
+  showPagination = true,
+  showNavigation = true,
 } = Astro.props;
 ---
 
@@ -47,7 +57,7 @@ const {
       </div>
     </div>
 
-    {bgImage && (
+    {bgImage && !enableSlider && (
       <div class="mt-16 relative">
         <div class="aspect-video bg-gradient-to-br from-secondary-100 via-neutral-100 to-accent-100 rounded-2xl flex items-center justify-center overflow-hidden">
           <div class="text-center p-8">
@@ -60,5 +70,77 @@ const {
         </div>
       </div>
     )}
+
+    {bgImage && enableSlider && (
+      <div class="mt-16 relative">
+        <Swiper
+          options={{
+            loop: true,
+            autoplay: {
+              delay: autoplayDelay,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            },
+            pagination: showPagination ? {
+              el: '.swiper-pagination',
+              clickable: true,
+            } : undefined,
+            navigation: showNavigation ? {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            } : undefined,
+            effect: 'fade',
+            fadeEffect: {
+              crossFade: true,
+            },
+            speed: 800,
+          }}
+          class="hero-swiper"
+        >
+          <SwiperWrapper>
+            {heroSlides.map((slide) => (
+              <SwiperSlide>
+                <div class="aspect-video bg-gradient-to-br from-secondary-100 via-neutral-100 to-accent-100 rounded-2xl flex items-center justify-center overflow-hidden relative">
+                  <!-- Background Görsel -->
+                  <img
+                    src={slide.image}
+                    alt={slide.title}
+                    class="absolute inset-0 w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <!-- Gradient Overlay -->
+                  <div class="absolute inset-0 bg-gradient-to-br from-secondary-100/10 via-neutral-100/20 to-accent-100/10"></div>
+                  <!-- Üzerinde İkon/İçerik -->
+                  <div class="relative z-10 text-center p-8 bg-white/50 backdrop-blur-sm rounded-2xl">
+                    <svg class="w-32 h-32 text-primary-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                    <p class="text-primary-600 font-medium text-xl">{slide.title}</p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </SwiperWrapper>
+
+          {showPagination && <SwiperPagination class="!bottom-4" />}
+          {showNavigation && (
+            <>
+              <SwiperButtonPrev class="!text-white !bg-white/20 hover:!bg-white/30" />
+              <SwiperButtonNext class="!text-white !bg-white/20 hover:!bg-white/30" />
+            </>
+          )}
+        </Swiper>
+      </div>
+    )}
   </div>
 </Section>
+
+<style>
+  :global(.hero-swiper .swiper-pagination-bullet) {
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+  }
+  :global(.hero-swiper .swiper-pagination-bullet-active) {
+    background: white;
+  }
+</style>

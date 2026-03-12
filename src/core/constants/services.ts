@@ -4,6 +4,7 @@ export interface Service {
   description: string;
   icon: string;
   slug: string;
+  image: string;
   features: string[];
 }
 
@@ -14,6 +15,7 @@ export const services: Service[] = [
     description: 'Binaların deprem yönetmeliğine uygun olarak güçlendirilmesi ve yapısal performans artırımı hizmetleri',
     icon: 'building',
     slug: 'guclendirme-calismalari',
+    image: '/docs/images/Güçlendirme Çalışmal.png',
     features: [
       'Bina Güçlendirme',
       'Deprem Analizi',
@@ -28,6 +30,7 @@ export const services: Service[] = [
     description: 'Tüm yapı elemanları için profesyonel su yalıtım çözümleri ve uygulamaları',
     icon: 'water',
     slug: 'su-yalitim',
+    image: '/docs/images/Su Yalıtım Hizmetler.png',
     features: [
       'Temel Su Yalıtımı',
       'Teras ve Balkon Yalıtımı',
@@ -42,6 +45,7 @@ export const services: Service[] = [
     description: 'Endüstriyel ve ticari alanlar için dayanıklı zemin kaplama çözümleri',
     icon: 'flooring',
     slug: 'zemin-kaplama',
+    image: '/docs/images/Zemin Kaplama Sistem.png',
     features: [
       'Epoxy Zemin Kaplama',
       'Poliüretan Kaplama',
@@ -56,6 +60,7 @@ export const services: Service[] = [
     description: 'Yapı sektöründe kullanılan tüm kimyasal ürünler ve uygulama hizmetleri',
     icon: 'chemical',
     slug: 'yapi-kimyasallari',
+    image: '/docs/images/Yapı Kimyasallar.png',
     features: [
       'Silan & Siloksan',
       'Sızdırmazlık Malzemeleri',
