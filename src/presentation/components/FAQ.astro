@@ -44,15 +44,14 @@ const { faqs } = Astro.props;
   }
 </style>
 
-<script define:vars={{ faqCount: faqs.length }}>
-  document.addEventListener('astro:page-load', () => {
+<script>
+  function initFAQ() {
     const faqItems = document.querySelectorAll('.faq-question');
 
     faqItems.forEach((button) => {
       button.addEventListener('click', () => {
         const answer = button.nextElementSibling;
         const icon = button.querySelector('.faq-icon');
-        const parent = button.parentElement;
         const isExpanded = button.getAttribute('aria-expanded') === 'true';
 
         // Close all other items
@@ -78,5 +77,12 @@ const { faqs } = Astro.props;
         }
       });
     });
-  });
+  }
+
+  // Run on initial page load
+  initFAQ();
+
+  // Run after Astro page transitions (if enabled in the future)
+  document.addEventListener('astro:page-load', initFAQ);
+  document.addEventListener('astro:after-swap', initFAQ);
 </script>
