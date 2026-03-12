@@ -6,6 +6,8 @@ interface Props {
   subtitle?: string;
   ctaText?: string;
   ctaLink?: string;
+  cta2Text?: string;
+  cta2Link?: string;
   bgImage?: boolean;
 }
 
@@ -14,6 +16,8 @@ const {
   subtitle = 'Güçlendirme, su yalıtım, zemin kaplama ve yapı kimyasalları konusunda profesyonel hizmetler',
   ctaText = 'Teklif Al',
   ctaLink = '/iletisim',
+  cta2Text = 'Hizmetlerimiz',
+  cta2Link = '/hizmetler',
   bgImage = true,
 } = Astro.props;
 ---
@@ -35,10 +39,10 @@ const {
           {ctaText}
         </a>
         <a
-          href="/hizmetler"
+          href={cta2Link}
           class="inline-block bg-white text-primary-700 px-8 py-4 rounded-lg font-medium hover:bg-gray-50 transition-colors border-2 border-primary-200"
         >
-          Hizmetlerimiz
+          {cta2Text}
         </a>
       </div>
     </div>
