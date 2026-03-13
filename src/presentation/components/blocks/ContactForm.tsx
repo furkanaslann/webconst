@@ -99,107 +99,118 @@ export default function ContactForm({ formName = 'contact' }: ContactFormProps) 
       netlify-honeypot="bot-field"
     >
       <input type="hidden" name="form-name" value={formName} />
+      <input type="hidden" name="subject" value="[WebConst] Mesajınız Var" />
 
       <div className="grid md:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-            Ad *
+        <div className="flex items-center gap-4">
+          <label htmlFor="firstName" className="w-24 text-sm font-medium text-gray-700 shrink-0">
+            Ad
           </label>
+          <div className="flex-1">
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleInputChange}
+              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
+                errors.firstName ? 'border-red-500' : 'border-gray-300'
+              }`}
+              required
+            />
+            {errors.firstName && (
+              <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>
+            )}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <label htmlFor="lastName" className="w-24 text-sm font-medium text-gray-700 shrink-0">
+            Soyad
+          </label>
+          <div className="flex-1">
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleInputChange}
+              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
+                errors.lastName ? 'border-red-500' : 'border-gray-300'
+              }`}
+              required
+            />
+            {errors.lastName && (
+              <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-4">
+        <label htmlFor="email" className="w-24 text-sm font-medium text-gray-700 shrink-0">
+          E-posta
+        </label>
+        <div className="flex-1">
           <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            value={formData.firstName}
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
             onChange={handleInputChange}
             className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
-              errors.firstName ? 'border-red-500' : 'border-gray-300'
+              errors.email ? 'border-red-500' : 'border-gray-300'
             }`}
             required
           />
-          {errors.firstName && (
-            <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>
+          {errors.email && (
+            <p className="mt-1 text-sm text-red-600">{errors.email}</p>
           )}
         </div>
+      </div>
 
-        <div>
-          <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-            Soyad *
-          </label>
+      <div className="flex items-center gap-4">
+        <label htmlFor="phone" className="w-24 text-sm font-medium text-gray-700 shrink-0">
+          Telefon
+        </label>
+        <div className="flex-1">
           <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            value={formData.lastName}
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
             onChange={handleInputChange}
             className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
-              errors.lastName ? 'border-red-500' : 'border-gray-300'
+              errors.phone ? 'border-red-500' : 'border-gray-300'
             }`}
             required
           />
-          {errors.lastName && (
-            <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>
+          {errors.phone && (
+            <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
           )}
         </div>
       </div>
 
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-          E-posta *
+      <div className="flex items-start gap-4">
+        <label htmlFor="message" className="w-24 text-sm font-medium text-gray-700 shrink-0 pt-2">
+          Mesaj
         </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleInputChange}
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
-            errors.email ? 'border-red-500' : 'border-gray-300'
-          }`}
-          required
-        />
-        {errors.email && (
-          <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-        )}
-      </div>
-
-      <div>
-        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-          Telefon *
-        </label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          value={formData.phone}
-          onChange={handleInputChange}
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
-            errors.phone ? 'border-red-500' : 'border-gray-300'
-          }`}
-          required
-        />
-        {errors.phone && (
-          <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
-        )}
-      </div>
-
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-          Mesaj *
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={5}
-          value={formData.message}
-          onChange={handleInputChange}
-          className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none ${
-            errors.message ? 'border-red-500' : 'border-gray-300'
-          }`}
-          required
-        />
-        {errors.message && (
-          <p className="mt-1 text-sm text-red-600">{errors.message}</p>
-        )}
+        <div className="flex-1">
+          <textarea
+            id="message"
+            name="message"
+            rows={5}
+            value={formData.message}
+            onChange={handleInputChange}
+            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none ${
+              errors.message ? 'border-red-500' : 'border-gray-300'
+            }`}
+            required
+          />
+          {errors.message && (
+            <p className="mt-1 text-sm text-red-600">{errors.message}</p>
+          )}
+        </div>
       </div>
 
       {errors.message && !errors.firstName && !errors.lastName && !errors.email && !errors.phone && (
