@@ -96,6 +96,7 @@ export default function ContactForm({ formName = 'contact' }: ContactFormProps) 
       className="space-y-6"
       data-netlify="true"
       onSubmit={handleSubmit}
+      netlify-honeypot="bot-field"
     >
       <input type="hidden" name="form-name" value={formName} />
 
