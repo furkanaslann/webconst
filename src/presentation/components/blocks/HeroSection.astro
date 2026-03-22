@@ -207,7 +207,7 @@ const {
       const activeCard = swiper.querySelector('.swiper-slide-active .hero-slide-card');
       if (activeCard) {
         // Force reflow to restart animation
-        void activeCard.offsetWidth;
+        void (activeCard as HTMLElement).offsetWidth;
         activeCard.classList.add('animate');
       }
     };
