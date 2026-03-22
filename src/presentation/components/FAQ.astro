@@ -13,9 +13,9 @@ interface Props {
 const { faqs } = Astro.props;
 ---
 
-<div class="space-y-4">
+<div class="space-y-4 faq-list">
   {faqs.map((faq, index) => (
-    <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden">
+    <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden faq-card" style={`transition-delay: ${index * 80}ms`}>
       <button
         class="faq-question w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
         aria-expanded="false"
@@ -42,9 +42,47 @@ const { faqs } = Astro.props;
   .faq-item[aria-expanded="true"] .faq-icon {
     transform: rotate(180deg);
   }
+
+  /* FAQ Card Animations */
+  .faq-card {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-delay, 0ms),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-delay, 0ms);
+  }
+
+  .faq-card.animate-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-card {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
 </style>
 
 <script>
+  function initFAQAnimations() {
+    const faqCards = document.querySelectorAll('.faq-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    faqCards.forEach(card => observer.observe(card));
+  }
+
+  document.addEventListener('DOMContentLoaded', initFAQAnimations);
+  initFAQAnimations();
+
   function initFAQ() {
     const faqItems = document.querySelectorAll('.faq-question');
 

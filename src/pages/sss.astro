@@ -74,7 +74,7 @@ const faqs: FAQItem[] = [
 >
   <Section bgColor="gray">
     <div class="py-20">
-      <div class="max-w-4xl mx-auto text-center mb-16">
+      <div class="max-w-4xl mx-auto text-center mb-16 animate-on-scroll">
         <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
           Sıkça Sorulan Sorular
         </h1>
@@ -84,28 +84,28 @@ const faqs: FAQItem[] = [
       </div>
 
       <div class="max-w-4xl mx-auto">
-        <div class="mb-12">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">Genel Sorular</h2>
+        <div class="mb-12 faq-category">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 animate-on-scroll">Genel Sorular</h2>
           <FAQ faqs={faqs.filter(f => f.category === 'Genel')} />
         </div>
 
-        <div class="mb-12">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">Güçlendirme Çalışmaları</h2>
+        <div class="mb-12 faq-category">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 animate-on-scroll">Güçlendirme Çalışmaları</h2>
           <FAQ faqs={faqs.filter(f => f.category === 'Güçlendirme')} />
         </div>
 
-        <div class="mb-12">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">Su Yalıtım Hizmetleri</h2>
+        <div class="mb-12 faq-category">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 animate-on-scroll">Su Yalıtım Hizmetleri</h2>
           <FAQ faqs={faqs.filter(f => f.category === 'Su Yalıtım')} />
         </div>
 
-        <div class="mb-12">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">Zemin Kaplama Sistemleri</h2>
+        <div class="mb-12 faq-category">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 animate-on-scroll">Zemin Kaplama Sistemleri</h2>
           <FAQ faqs={faqs.filter(f => f.category === 'Zemin Kaplama')} />
         </div>
 
-        <div class="mb-12">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6">Yapı Kimyasalları</h2>
+        <div class="mb-12 faq-category">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6 animate-on-scroll">Yapı Kimyasalları</h2>
           <FAQ faqs={faqs.filter(f => f.category === 'Yapı Kimyasalları')} />
         </div>
       </div>
@@ -113,17 +113,18 @@ const faqs: FAQItem[] = [
   </Section>
 
   <Section bgColor="white">
-    <div class="py-16">
+    <div class="py-16 cta-section">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 animate-on-scroll">
           Sorunuzun Cevabını Bulamadınız mı?
         </h2>
-        <p class="text-gray-600 mb-6">
+        <p class="text-gray-600 mb-6 animate-on-scroll" style="transition-delay: 100ms">
           Projeleriniz hakkında daha fazla bilgi almak veya sorularınızı sormak için bizimle iletişime geçin
         </p>
         <a
           href="/iletisim"
-          class="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-medium hover:bg-accent-600 transition-colors"
+          class="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-medium hover:bg-accent-600 transition-all duration-300 hover:scale-105 animate-on-scroll"
+          style="transition-delay: 200ms"
         >
           İletişime Geç
         </a>
@@ -131,3 +132,33 @@ const faqs: FAQItem[] = [
     </div>
   </Section>
 </BaseLayout>
+
+<script>
+  import { observeScrollAnimations } from '../presentation/utils/animations';
+
+  function initAnimations() {
+    observeScrollAnimations('.animate-on-scroll');
+    observeScrollAnimations('.cta-section');
+  }
+
+  document.addEventListener('DOMContentLoaded', initAnimations);
+  initAnimations();
+</script>
+
+<style>
+  .cta-section {
+    opacity: 0;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cta-section.animate-in {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-section {
+      opacity: 1 !important;
+      transition: none !important;
+    }
+  }
+</style>
