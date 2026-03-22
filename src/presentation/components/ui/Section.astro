@@ -2,11 +2,15 @@
 interface Props {
   className?: string;
   bgColor?: 'white' | 'gray' | 'gray-600' | 'primary';
+  animate?: boolean;
+  animationType?: 'fade' | 'slide' | 'scale';
 }
 
 const {
   className = '',
   bgColor = 'white',
+  animate = false,
+  animationType = 'fade',
 } = Astro.props;
 
 const bgClasses = {
@@ -15,8 +19,14 @@ const bgClasses = {
   'gray-600': 'bg-gray-600',
   primary: 'bg-primary-50',
 };
+
+const animationClasses = animate ? {
+  fade: 'animate-fade',
+  slide: 'animate-on-scroll',
+  scale: 'animate-scale',
+}[animationType] || '' : '';
 ---
 
-<section class={`${bgClasses[bgColor]} ${className}`}>
+<section class={`${bgClasses[bgColor]} ${className} ${animationClasses}`}>
   <slot />
 </section>

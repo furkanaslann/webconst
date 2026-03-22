@@ -17,9 +17,9 @@ const { references } = Astro.props;
 ---
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-  {references.map((ref) => (
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-shadow">
-      <div class="aspect-video bg-gradient-to-br from-secondary-100 via-neutral-100 to-accent-100 flex items-center justify-center relative overflow-hidden">
+  {references.map((ref, index) => (
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 hover:scale-105 reference-card" style={`transition-delay: ${index * 100}ms`}>
+      <div class="aspect-video bg-gradient-to-br from-secondary-100 via-neutral-100 to-accent-100 flex items-center justify-center relative overflow-hidden reference-image">
         {ref.image ? (
           <img src={ref.image} alt={ref.title} class="w-full h-full object-cover" />
         ) : (
@@ -48,3 +48,55 @@ const { references } = Astro.props;
     </div>
   ))}
 </div>
+
+<style>
+  .reference-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-delay, 0ms),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-delay, 0ms);
+  }
+
+  .reference-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reference-image {
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reference-card.animate-in .reference-image {
+    opacity: 1;
+    transition-delay: 0.2s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reference-card,
+    .reference-image {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  function initReferenceAnimations() {
+    const cards = document.querySelectorAll('.reference-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    cards.forEach(card => observer.observe(card));
+  }
+
+  document.addEventListener('DOMContentLoaded', initReferenceAnimations);
+  initReferenceAnimations();
+</script>

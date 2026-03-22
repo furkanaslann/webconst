@@ -18,8 +18,8 @@ const getIconSvg = (icon: string) => {
 };
 ---
 
-<div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow group">
-  <div class="w-14 h-14 bg-secondary-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary-200 transition-colors">
+<div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 group animate-on-scroll" data-stagger>
+  <div class="w-14 h-14 bg-secondary-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-secondary-200 transition-all duration-300 group-hover:scale-110">
     <span class="text-secondary-600">
       <span set:html={getIconSvg(service.icon)} />
     </span>
