@@ -110,12 +110,10 @@ const {
                   />
                   <!-- Gradient Overlay -->
                   <div class="absolute inset-0 bg-gradient-to-br from-secondary-100/10 via-neutral-100/20 to-accent-100/10"></div>
-                  <!-- Üzerinde İkon/İçerik -->
-                  <div class="relative z-10 text-center p-8 bg-white/50 backdrop-blur-sm rounded-2xl">
-                    <svg class="w-32 h-32 text-primary-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                    </svg>
-                    <p class="text-primary-600 font-medium text-xl">{slide.title}</p>
+                  <!-- Üzerinde Kart İçeriği -->
+                  <div class="hero-slide-card absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center p-8 bg-white/50 backdrop-blur-md rounded-2xl shadow-xl max-w-lg">
+                    <h3 class="hero-slide-title text-2xl md:text-3xl font-bold text-gray-900 mb-3">{slide.title}</h3>
+                    <p class="hero-slide-description text-gray-600 text-sm leading-relaxed">{slide.description}</p>
                   </div>
                 </div>
               </SwiperSlide>
@@ -125,8 +123,8 @@ const {
           {showPagination && <SwiperPagination class="!bottom-4" />}
           {showNavigation && (
             <>
-              <SwiperButtonPrev class="!text-white !bg-white/20 hover:!bg-white/30" />
-              <SwiperButtonNext class="!text-white !bg-white/20 hover:!bg-white/30" />
+              <SwiperButtonPrev class="!text-white" />
+              <SwiperButtonNext class="!text-white" />
             </>
           )}
         </Swiper>
@@ -143,4 +141,93 @@ const {
   :global(.hero-swiper .swiper-pagination-bullet-active) {
     background: white;
   }
+
+  /* Slide Card Animations */
+  .hero-slide-card {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+
+  .hero-slide-card.animate {
+    animation: slideCardFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes slideCardFadeIn {
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .hero-slide-title {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  .hero-slide-card.animate .hero-slide-title {
+    animation: slideTitleFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  }
+
+  @keyframes slideTitleFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-slide-description {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  .hero-slide-card.animate .hero-slide-description {
+    animation: slideDescFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  }
+
+  @keyframes slideDescFadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 </style>
+
+<script>
+  function initSlideAnimations() {
+    const swiper = document.querySelector('.hero-swiper');
+    if (!swiper) return;
+
+    const animateActiveSlide = () => {
+      // Remove animation from all cards
+      swiper.querySelectorAll('.hero-slide-card').forEach((card) => {
+        card.classList.remove('animate');
+      });
+
+      // Add animation to active slide card
+      const activeCard = swiper.querySelector('.swiper-slide-active .hero-slide-card');
+      if (activeCard) {
+        // Force reflow to restart animation
+        void activeCard.offsetWidth;
+        activeCard.classList.add('animate');
+      }
+    };
+
+    // Initial animation
+    setTimeout(animateActiveSlide, 100);
+
+    // Watch for slide changes
+    const observer = new MutationObserver(() => {
+      animateActiveSlide();
+    });
+
+    // Observe slide class changes
+    swiper.querySelectorAll('.swiper-slide').forEach((slide) => {
+      observer.observe(slide, { attributes: true, attributeFilter: ['class'] });
+    });
+  }
+
+  // Initialize when DOM is ready
+  document.addEventListener('DOMContentLoaded', initSlideAnimations);
+  // Fallback for Astro's page load
+  initSlideAnimations();
+</script>
