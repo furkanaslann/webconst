@@ -1,5 +1,8 @@
 ---
-const currentPath = Astro.url.pathname;
+const normalizePath = (path: string) =>
+  path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path;
+
+const currentPath = normalizePath(Astro.url.pathname);
 
 const navItems = [
   { href: '/', label: 'Anasayfa' },
@@ -28,7 +31,7 @@ const navItems = [
           <a
             href={item.href}
             class={`font-medium transition-colors ${
-              currentPath === item.href
+              currentPath === normalizePath(item.href)
                 ? 'text-accent-600'
                 : 'text-gray-700 hover:text-accent-600'
             }`}
@@ -69,7 +72,7 @@ const navItems = [
           <a
             href={item.href}
             class={`font-medium py-2 transition-colors ${
-              currentPath === item.href
+              currentPath === normalizePath(item.href)
                 ? 'text-accent-600'
                 : 'text-gray-700 hover:text-accent-600'
             }`}
