@@ -19,7 +19,7 @@ The project will strictly adhere to Maintainability and Separation of Concerns p
 
 ### Astro Folder Structure
 ```
-webconst/
+Process/
 ├── public/                 # Favicon, static images, fonts (Uncompiled assets)
 ├── src/
 │   ├── core/               # CLEAN ARCHITECTURE CORE

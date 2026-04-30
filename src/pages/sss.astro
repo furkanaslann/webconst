@@ -66,68 +66,95 @@ const faqs: FAQItem[] = [
     category: 'Güçlendirme',
   },
 ];
+
+const faqCategories = [
+  { id: 'genel', key: 'Genel', title: 'Genel Sorular', helper: 'Keşif, fiyatlandırma ve hizmet bölgeleri' },
+  { id: 'guclendirme', key: 'Güçlendirme', title: 'Güçlendirme Çalışmaları', helper: 'Deprem dayanımı, süreç ve gerekli belgeler' },
+  { id: 'su-yalitim', key: 'Su Yalıtım', title: 'Su Yalıtım Hizmetleri', helper: 'Uygulama alanları, garanti ve teknik detaylar' },
+  { id: 'zemin-kaplama', key: 'Zemin Kaplama', title: 'Zemin Kaplama Sistemleri', helper: 'Epoxy çözümler, kuruma süresi ve kullanım alanları' },
+  { id: 'yapi-kimyasallari', key: 'Yapı Kimyasalları', title: 'Yapı Kimyasalları', helper: 'Malzeme tipleri ve doğru kullanım senaryoları' },
+];
 ---
 
 <BaseLayout
-  title="Sıkça Sorulan Sorular - Webconst"
-  description="Webconst hizmetleri hakkında sıkça sorulan soruları ve cevapları inceleyin. Güçlendirme, su yalıtım, zemin kaplama ve yapı kimyasalları hakkında merak ettikleriniz."
+  title="Sıkça Sorulan Sorular - Process"
+  description="Process hizmetleri hakkında sıkça sorulan soruları ve cevapları inceleyin. Güçlendirme, su yalıtım, zemin kaplama ve yapı kimyasalları hakkında merak ettikleriniz."
 >
   <Section bgColor="gray">
     <div class="py-20">
-      <div class="max-w-4xl mx-auto text-center mb-16 animate-on-scroll">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+      <div class="max-w-5xl mx-auto text-center mb-12 animate-on-scroll px-4">
+        <p class="inline-flex items-center justify-center rounded-full border border-accent-200 bg-accent-50 px-4 py-1 text-sm font-semibold text-accent-700 mb-5">
+          Teknik Bilgi Merkezi
+        </p>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-5 tracking-tight">
           Sıkça Sorulan Sorular
         </h1>
-        <p class="text-xl text-gray-600">
-          Hizmetlerimiz hakkında merak ettiğiniz soruların cevaplarını burada bulabilirsiniz
+        <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Güçlendirme, su yalıtım, zemin kaplama ve yapı kimyasalları hakkında en çok sorulan soruları
+          tek bir sayfada topladık.
         </p>
       </div>
 
-      <div class="max-w-4xl mx-auto">
-        <div class="mb-12 faq-category">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6 animate-on-scroll">Genel Sorular</h2>
-          <FAQ faqs={faqs.filter(f => f.category === 'Genel')} />
-        </div>
+      <div class="max-w-5xl mx-auto px-4 mb-14">
+        <nav class="animate-on-scroll" aria-label="SSS Kategori Gezintisi">
+          <ul class="flex flex-wrap justify-center gap-3">
+            {faqCategories.map((category) => (
+              <li>
+                <a
+                  href={`#${category.id}`}
+                  class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:border-accent-300 hover:text-accent-700 transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
+                >
+                  <span>{category.title}</span>
+                  <span class="rounded-full bg-gray-100 px-2 py-0.5 text-xs text-gray-600">
+                    {faqs.filter((faq) => faq.category === category.key).length}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
 
-        <div class="mb-12 faq-category">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6 animate-on-scroll">Güçlendirme Çalışmaları</h2>
-          <FAQ faqs={faqs.filter(f => f.category === 'Güçlendirme')} />
-        </div>
-
-        <div class="mb-12 faq-category">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6 animate-on-scroll">Su Yalıtım Hizmetleri</h2>
-          <FAQ faqs={faqs.filter(f => f.category === 'Su Yalıtım')} />
-        </div>
-
-        <div class="mb-12 faq-category">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6 animate-on-scroll">Zemin Kaplama Sistemleri</h2>
-          <FAQ faqs={faqs.filter(f => f.category === 'Zemin Kaplama')} />
-        </div>
-
-        <div class="mb-12 faq-category">
-          <h2 class="text-2xl font-bold text-gray-900 mb-6 animate-on-scroll">Yapı Kimyasalları</h2>
-          <FAQ faqs={faqs.filter(f => f.category === 'Yapı Kimyasalları')} />
-        </div>
+      <div class="max-w-5xl mx-auto px-4">
+        {faqCategories.map((category) => (
+          <section id={category.id} class="mb-12 faq-category scroll-mt-32">
+            <div class="mb-6 animate-on-scroll">
+              <h2 class="text-2xl font-bold text-gray-900">{category.title}</h2>
+              <p class="text-gray-600 mt-2">{category.helper}</p>
+            </div>
+            <FAQ faqs={faqs.filter((faq) => faq.category === category.key)} />
+          </section>
+        ))}
       </div>
     </div>
   </Section>
 
   <Section bgColor="white">
-    <div class="py-16 cta-section">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4 animate-on-scroll">
+    <div class="py-16 cta-section px-4">
+      <div class="max-w-5xl mx-auto rounded-2xl border border-accent-100 bg-accent-50/70 p-8 md:p-10 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 animate-on-scroll">
           Sorunuzun Cevabını Bulamadınız mı?
         </h2>
-        <p class="text-gray-600 mb-6 animate-on-scroll" style="transition-delay: 100ms">
-          Projeleriniz hakkında daha fazla bilgi almak veya sorularınızı sormak için bizimle iletişime geçin
+        <p class="text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed animate-on-scroll" style="transition-delay: 100ms">
+          Projenize uygun en doğru çözümü birlikte belirlemek için ücretsiz keşif ve danışmanlık
+          talep edebilirsiniz.
         </p>
-        <a
-          href="/iletisim"
-          class="inline-block bg-accent-500 text-white px-8 py-3 rounded-lg font-medium hover:bg-accent-600 transition-all duration-300 hover:scale-105 animate-on-scroll"
-          style="transition-delay: 200ms"
-        >
-          İletişime Geç
-        </a>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="/iletisim"
+            class="inline-flex items-center justify-center bg-accent-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-accent-600 transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 animate-on-scroll"
+            style="transition-delay: 200ms"
+          >
+            İletişime Geç
+          </a>
+          <a
+            href="/hizmetler"
+            class="inline-flex items-center justify-center bg-white text-gray-800 border border-gray-300 px-8 py-3 rounded-lg font-semibold hover:border-accent-300 hover:text-accent-700 transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2 animate-on-scroll"
+            style="transition-delay: 260ms"
+          >
+            Hizmetleri İncele
+          </a>
+        </div>
       </div>
     </div>
   </Section>

@@ -1,4 +1,6 @@
 ---
+import complogo from '../../../docs/brand_assets/complogotrans.png';
+
 const currentYear = new Date().getFullYear();
 
 const footerLinks = [
@@ -20,23 +22,24 @@ const services = [
 const contactInfo = {
   address: 'Mimarsinan OSB 1. Cad. No:4, Melikgazi / Kayseri',
   phone: '+90 532 000 00 00',
-  email: 'info@webconst.com.tr',
+  email: 'info@process.com.tr',
 };
 ---
 
-<footer class="bg-dark text-white">
+<footer class="bg-dark-500 text-white">
   <div class="container mx-auto px-4 py-12">
     <div class="grid md:grid-cols-4 gap-8">
       <div class="md:col-span-1">
-        <div class="flex items-center space-x-2 mb-4">
-          <div class="w-10 h-10 bg-accent-500 rounded-lg flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-            </svg>
-          </div>
-          <span class="text-2xl font-bold">Webconst</span>
-        </div>
-        <p class="text-gray-400 mb-4">
+        <a href="/" class="inline-flex items-center mb-4" aria-label="Process ana sayfa">
+          <img
+            src={complogo.src}
+            alt="Process logo"
+            class="h-14 w-auto object-contain"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        <p class="text-dark-100 mb-4">
           20+ yıllık tecrübemizle yapı sektöründe profesyonel çözümler sunuyoruz.
         </p>
         <div class="flex space-x-4">
@@ -53,7 +56,7 @@ const contactInfo = {
         <ul class="space-y-2">
           {footerLinks.map((link) => (
             <li>
-              <a href={link.href} class="text-gray-400 hover:text-accent-500 transition-colors">
+              <a href={link.href} class="text-dark-100 hover:text-accent-300 transition-colors">
                 {link.label}
               </a>
             </li>
@@ -66,7 +69,7 @@ const contactInfo = {
         <ul class="space-y-2">
           {services.map((service) => (
             <li>
-              <a href={service.href} class="text-gray-400 hover:text-accent-500 transition-colors">
+              <a href={service.href} class="text-dark-100 hover:text-accent-300 transition-colors">
                 {service.label}
               </a>
             </li>
@@ -76,7 +79,7 @@ const contactInfo = {
 
       <div>
         <h4 class="text-lg font-semibold mb-4">İletişim</h4>
-        <ul class="space-y-3 text-gray-400">
+        <ul class="space-y-3 text-dark-100">
           <li class="flex items-start">
             <svg class="w-5 h-5 mr-2 mt-0.5 flex-shrink-0 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
@@ -88,7 +91,7 @@ const contactInfo = {
             <svg class="w-5 h-5 mr-2 flex-shrink-0 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
             </svg>
-            <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} class="hover:text-accent-500 transition-colors">
+            <a href={`tel:${contactInfo.phone.replace(/\s/g, '')}`} class="hover:text-accent-300 transition-colors">
               {contactInfo.phone}
             </a>
           </li>
@@ -96,7 +99,7 @@ const contactInfo = {
             <svg class="w-5 h-5 mr-2 flex-shrink-0 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
             </svg>
-            <a href={`mailto:${contactInfo.email}`} class="hover:text-accent-500 transition-colors">
+            <a href={`mailto:${contactInfo.email}`} class="hover:text-accent-300 transition-colors">
               {contactInfo.email}
             </a>
           </li>
@@ -104,14 +107,14 @@ const contactInfo = {
       </div>
     </div>
 
-    <div class="border-t border-gray-800 mt-8 pt-8">
+    <div class="border-t border-dark-300/40 mt-8 pt-8">
       <div class="flex flex-col md:flex-row justify-between items-center">
-        <p class="text-gray-400 text-sm">
-          &copy; {currentYear} Webconst. Tüm hakları saklıdır.
+        <p class="text-dark-200 text-sm">
+          &copy; {currentYear} Process. Tüm hakları saklıdır.
         </p>
         <div class="flex space-x-6 mt-4 md:mt-0">
-          <a href="#" class="text-gray-400 hover:text-accent-500 text-sm transition-colors">Gizlilik Politikası</a>
-          <a href="#" class="text-gray-400 hover:text-accent-500 text-sm transition-colors">Kullanım Şartları</a>
+          <a href="#" class="text-dark-100 hover:text-accent-300 text-sm transition-colors">Gizlilik Politikası</a>
+          <a href="#" class="text-dark-100 hover:text-accent-300 text-sm transition-colors">Kullanım Şartları</a>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@
 ## Project Folder Structure
 
 ```
-webconst/
+Process/
 ├── public/                 # Favicon, statik resimler, fontlar (Derlenmeyen dosyalar)
 ├── src/
 │   ├── core/               # CLEAN ARCHITECTURE MERKEZİ

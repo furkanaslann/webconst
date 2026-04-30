@@ -15,10 +15,11 @@ const { faqs } = Astro.props;
 
 <div class="space-y-4 faq-list">
   {faqs.map((faq, index) => (
-    <div class="faq-item bg-white rounded-lg shadow-md overflow-hidden faq-card" style={`transition-delay: ${index * 80}ms`}>
+    <div class="faq-item bg-white rounded-xl shadow-md overflow-hidden faq-card border border-gray-100" style={`transition-delay: ${index * 80}ms`}>
       <button
-        class="faq-question w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+        class="faq-question w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-500 focus-visible:ring-offset-2"
         aria-expanded="false"
+        aria-controls={`faq-answer-${faq.id}`}
         data-faq-index={index}
       >
         <span class="font-medium text-gray-900 pr-4">{faq.question}</span>
@@ -31,15 +32,15 @@ const { faqs } = Astro.props;
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
         </svg>
       </button>
-      <div class="faq-answer hidden px-6 pb-4">
-        <p class="text-gray-600">{faq.answer}</p>
+      <div id={`faq-answer-${faq.id}`} class="faq-answer hidden px-6 pb-5">
+        <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
       </div>
     </div>
   ))}
 </div>
 
 <style>
-  .faq-item[aria-expanded="true"] .faq-icon {
+  .faq-question[aria-expanded="true"] .faq-icon {
     transform: rotate(180deg);
   }
 
@@ -84,34 +85,37 @@ const { faqs } = Astro.props;
   initFAQAnimations();
 
   function initFAQ() {
-    const faqItems = document.querySelectorAll('.faq-question');
+    const faqItems = document.querySelectorAll<HTMLButtonElement>('.faq-question');
 
     faqItems.forEach((button) => {
+      const answer = button.nextElementSibling as HTMLElement | null;
+      if (!answer) return;
+      answer.hidden = true;
+
       button.addEventListener('click', () => {
-        const answer = button.nextElementSibling;
-        const icon = button.querySelector('.faq-icon');
         const isExpanded = button.getAttribute('aria-expanded') === 'true';
 
         // Close all other items
         faqItems.forEach((otherButton) => {
           if (otherButton !== button) {
             otherButton.setAttribute('aria-expanded', 'false');
-            const otherAnswer = otherButton.nextElementSibling;
-            const otherIcon = otherButton.querySelector('.faq-icon');
-            otherAnswer?.classList.add('hidden');
-            otherIcon?.classList.remove('rotate-180');
+            const otherAnswer = otherButton.nextElementSibling as HTMLElement | null;
+            if (otherAnswer) {
+              otherAnswer.classList.add('hidden');
+              otherAnswer.hidden = true;
+            }
           }
         });
 
         // Toggle current item
         if (isExpanded) {
           button.setAttribute('aria-expanded', 'false');
-          answer?.classList.add('hidden');
-          icon?.classList.remove('rotate-180');
+          answer.classList.add('hidden');
+          answer.hidden = true;
         } else {
           button.setAttribute('aria-expanded', 'true');
-          answer?.classList.remove('hidden');
-          icon?.classList.add('rotate-180');
+          answer.classList.remove('hidden');
+          answer.hidden = false;
         }
       });
     });

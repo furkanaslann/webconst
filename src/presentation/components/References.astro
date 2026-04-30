@@ -14,11 +14,24 @@ interface Props {
 }
 
 const { references } = Astro.props;
+
+const slugifyCategory = (category: string) =>
+  category
+    .toLocaleLowerCase('tr-TR')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 ---
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
   {references.map((ref, index) => (
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 hover:scale-105 reference-card" style={`transition-delay: ${index * 100}ms`}>
+    <article
+      class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 reference-card"
+      style={`transition-delay: ${index * 100}ms`}
+      data-category={slugifyCategory(ref.category)}
+      data-reference-card
+    >
       <div class="aspect-video bg-gradient-to-br from-secondary-100 via-neutral-100 to-accent-100 flex items-center justify-center relative overflow-hidden reference-image">
         {ref.image ? (
           <img src={ref.image} alt={ref.title} class="w-full h-full object-cover" />
@@ -35,7 +48,7 @@ const { references } = Astro.props;
         </div>
       </div>
       <div class="p-6">
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">{ref.title}</h3>
+        <h3 class="text-lg font-semibold text-gray-900 mb-2 leading-snug">{ref.title}</h3>
         <div class="flex items-center text-sm text-gray-500 mb-3">
           <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
@@ -43,9 +56,9 @@ const { references } = Astro.props;
           </svg>
           {ref.location}
         </div>
-        <p class="text-gray-600 text-sm">{ref.description}</p>
+        <p class="text-gray-600 text-sm leading-6">{ref.description}</p>
       </div>
-    </div>
+    </article>
   ))}
 </div>
 

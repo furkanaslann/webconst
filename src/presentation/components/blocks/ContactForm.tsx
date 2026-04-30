@@ -65,7 +65,7 @@ export default function ContactForm({ formName = 'contact' }: ContactFormProps) 
 
   if (isSuccess) {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
+      <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center" role="status" aria-live="polite">
         <svg
           className="w-12 h-12 text-green-500 mx-auto mb-4"
           fill="none"
@@ -99,7 +99,7 @@ export default function ContactForm({ formName = 'contact' }: ContactFormProps) 
       netlify-honeypot="bot-field"
     >
       <input type="hidden" name="form-name" value={formName} />
-      <input type="hidden" name="subject" value="[WebConst] Mesajınız Var" />
+      <input type="hidden" name="subject" value="[Process] Mesajınız Var" />
 
       <div className="grid md:grid-cols-2 gap-6">
         <div className="flex items-center gap-4">
@@ -113,7 +113,7 @@ export default function ContactForm({ formName = 'contact' }: ContactFormProps) 
               name="firstName"
               value={formData.firstName}
               onChange={handleInputChange}
-              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
+              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:border-transparent transition-colors motion-reduce:transition-none ${
                 errors.firstName ? 'border-red-500' : 'border-gray-300'
               }`}
               required
@@ -135,7 +135,7 @@ export default function ContactForm({ formName = 'contact' }: ContactFormProps) 
               name="lastName"
               value={formData.lastName}
               onChange={handleInputChange}
-              className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
+              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:border-transparent transition-colors motion-reduce:transition-none ${
                 errors.lastName ? 'border-red-500' : 'border-gray-300'
               }`}
               required
@@ -158,7 +158,7 @@ export default function ContactForm({ formName = 'contact' }: ContactFormProps) 
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
+            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:border-transparent transition-colors motion-reduce:transition-none ${
               errors.email ? 'border-red-500' : 'border-gray-300'
             }`}
             required
@@ -180,7 +180,7 @@ export default function ContactForm({ formName = 'contact' }: ContactFormProps) 
             name="phone"
             value={formData.phone}
             onChange={handleInputChange}
-            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
+            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:border-transparent transition-colors motion-reduce:transition-none ${
               errors.phone ? 'border-red-500' : 'border-gray-300'
             }`}
             required
@@ -202,7 +202,7 @@ export default function ContactForm({ formName = 'contact' }: ContactFormProps) 
             rows={5}
             value={formData.message}
             onChange={handleInputChange}
-            className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none ${
+            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:border-transparent transition-colors resize-none motion-reduce:transition-none ${
               errors.message ? 'border-red-500' : 'border-gray-300'
             }`}
             required
@@ -222,7 +222,7 @@ export default function ContactForm({ formName = 'contact' }: ContactFormProps) 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-primary-600 text-white py-3 rounded-lg font-medium hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-primary-600 text-white min-h-11 py-3 rounded-lg font-medium hover:bg-primary-700 transition-colors motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? 'Gönderiliyor...' : 'Gönder'}
       </button>
