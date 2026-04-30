@@ -1,7 +1,7 @@
 # Product Requirements Document (PRD): Corporate Website
 
 ## 1. Executive Summary
-This project involves the development of a corporate promotional website. The final deployment domain is currently To Be Determined (TBD). The design, service scope, and business logic will heavily reference the existing website: `http://adimproje.com.tr/`.
+This project involves the development of a corporate promotional website. The final deployment domain is currently To Be Determined (TBD). The design, service scope, and business logic will heavily reference the existing websites: `http://adimproje.com.tr/`, `https://premiodekorasyon.com/`, `https://metka61insaat.com/`. 
 
 The primary goal is to build an ultra-fast, highly SEO-optimized static website using Static Site Generation (SSG) principles. The system will not rely on a server-side database or an active backend architecture.
 
