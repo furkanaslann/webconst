@@ -4,6 +4,7 @@ export interface ContactFormData {
   email: string;
   phone: string;
   message: string;
+  botField: string;
 }
 
 export interface ContactFormErrors {

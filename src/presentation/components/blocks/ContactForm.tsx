@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useRef, useState, type FormEvent } from 'react';
 import { validateContactForm } from '../../../core/application/validators/contact.validator';
 import { NetlifyFormsService } from '../../../core/infrastructure/netlify/forms.service';
 import type { ContactFormData, ContactFormErrors } from '../../../core/domain/types/contact.types';
@@ -18,11 +18,14 @@ export default function ContactForm({
     email: '',
     phone: '',
     message: '',
+    botField: '',
   });
 
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const formLoadedAt = useRef<number>(Date.now());
+  const MIN_SUBMIT_TIME_MS = 3000;
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -37,6 +40,18 @@ export default function ContactForm({
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    // Formun anormal hızlı gönderimi bot davranışı olabilir.
+    if (Date.now() - formLoadedAt.current < MIN_SUBMIT_TIME_MS) {
+      setErrors({ message: 'Lütfen formu doldurup tekrar deneyin.' });
+      return;
+    }
+
+    // Honeypot alanı doluysa bot olarak değerlendirip sessizce durdur.
+    if (formData.botField.trim().length > 0) {
+      return;
+    }
+
     const validationErrors = validateContactForm(formData);
 
     if (Object.keys(validationErrors).length > 0) {
@@ -57,6 +72,7 @@ export default function ContactForm({
         email: '',
         phone: '',
         message: '',
+        botField: '',
       });
       // Reset success message after 5 seconds
       setTimeout(() => setIsSuccess(false), 5000);
@@ -101,10 +117,24 @@ export default function ContactForm({
       className="space-y-6"
       data-netlify="true"
       onSubmit={handleSubmit}
-      netlify-honeypot="bot-field"
+      netlify-honeypot="botField"
     >
       <input type="hidden" name="form-name" value={formName} />
       <input type="hidden" name="subject" value="[Process] Mesajınız Var" />
+      <p className="hidden" aria-hidden="true">
+        <label htmlFor="bot-field">
+          Bu alanı boş bırakın
+        </label>
+        <input
+          id="bot-field"
+          name="botField"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={formData.botField}
+          onChange={handleInputChange}
+        />
+      </p>
 
       <div className="grid md:grid-cols-2 gap-6">
         <div className="flex items-center gap-4">
