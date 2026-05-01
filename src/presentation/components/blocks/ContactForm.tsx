@@ -5,9 +5,13 @@ import type { ContactFormData, ContactFormErrors } from '../../../core/domain/ty
 
 interface ContactFormProps {
   formName?: string;
+  successPath?: string;
 }
 
-export default function ContactForm({ formName = 'contact' }: ContactFormProps) {
+export default function ContactForm({
+  formName = 'contact',
+  successPath = '/tesekkurler',
+}: ContactFormProps) {
   const [formData, setFormData] = useState<ContactFormData>({
     firstName: '',
     lastName: '',
@@ -92,6 +96,7 @@ export default function ContactForm({ formName = 'contact' }: ContactFormProps) 
   return (
     <form
       name={formName}
+      action={successPath}
       method="POST"
       className="space-y-6"
       data-netlify="true"

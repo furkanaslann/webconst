@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../presentation/layouts/BaseLayout.astro';
+import Section from '../presentation/components/ui/Section.astro';
+---
+
+<BaseLayout
+  title="Teşekkürler - Process"
+  description="Mesajınız başarıyla alındı. En kısa sürede sizinle iletişime geçeceğiz."
+>
+  <Section bgColor="gray-600">
+    <div class="min-h-[60vh] flex items-center justify-center px-4 py-16">
+      <div class="w-full max-w-2xl rounded-2xl bg-white p-8 md:p-10 shadow-xl">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900">
+          Teşekkürler!
+        </h1>
+        <p class="mt-4 text-lg text-gray-700 leading-relaxed">
+          Mesajınızı aldık. En kısa sürede size geri dönüş yapacağız.
+        </p>
+        <a
+          href="/"
+          class="mt-8 inline-flex items-center rounded-lg bg-primary-600 px-6 py-3 text-white font-semibold hover:bg-primary-700 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+        >
+          Siteye geri dön
+        </a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
