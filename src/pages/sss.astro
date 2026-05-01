@@ -65,6 +65,42 @@ const faqs: FAQItem[] = [
     answer: 'Öncelikle binanın rölev ölçüsü, statik projesi ve varsa zemin etüt raporları gereklidir. Bu belgelerle birlikte binanın mevcut durumu incelenir, laboratuvar testleri yapılır ve uygun güçlendirme projesi hazırlanır.',
     category: 'Güçlendirme',
   },
+  {
+    id: '11',
+    question: 'Kayseri mantolama fiyatları neye göre belirlenir?',
+    answer: 'Kayseri’de mantolama fiyatları bina cephesi metrajı, iskele ihtiyacı, seçilen yalıtım malzemesi, kat yüksekliği ve detay işçilik kalemlerine göre belirlenir. Net fiyatlandırma için yerinde keşif ve mevcut cephe analizi yapılması gerekir.',
+    category: 'Mantolama & Çatı',
+  },
+  {
+    id: '12',
+    question: 'Çatı yenileme ne kadar sürer, su yalıtımı dahil mi?',
+    answer: 'Çatı yenileme süresi çatının büyüklüğü, hasar durumu ve hava koşullarına göre değişir. Profesyonel uygulamada kaplama yenileme ile birlikte su yalıtımı, detay sızdırmazlık ve gerekli havalandırma kontrolleri birlikte planlanır.',
+    category: 'Mantolama & Çatı',
+  },
+  {
+    id: '13',
+    question: 'Kayseri anahtar teslim tadilat hizmeti neleri kapsar?',
+    answer: 'Anahtar teslim tadilat hizmeti; keşif, ihtiyaç analizi, uygulama planı, malzeme seçimi, saha koordinasyonu, kalite kontrol ve teslim adımlarını kapsar. Tek ekip yönetimi sayesinde süreç daha kontrollü ve zaman planına uygun ilerler.',
+    category: 'İç Mekan Uygulamaları',
+  },
+  {
+    id: '14',
+    question: 'İç cephe boya ve alçıpan işleri kaç günde tamamlanır?',
+    answer: 'Tamamlanma süresi uygulama alanının büyüklüğü, yüzey hazırlığı, kat sayısı ve kuruma koşullarına göre değişir. Boya ve alçıpan işlerinde net süre, keşif sonrası oluşturulan iş programı ile gün bazlı planlanır.',
+    category: 'İç Mekan Uygulamaları',
+  },
+  {
+    id: '15',
+    question: 'Banyo ve mutfak gibi alanlarda hangi alçıpan tercih edilmelidir?',
+    answer: 'Nemli hacimlerde neme dayanımlı levhalar tercih edilmelidir. Sürekli su teması bulunan bölgelerde ise uygun su yalıtım detayı ve doğru alt sistem çözümü birlikte planlanarak uygulama ömrü artırılır.',
+    category: 'İç Mekan Uygulamaları',
+  },
+  {
+    id: '16',
+    question: 'Anahtar teslim proje yönetiminde süre ve bütçe nasıl kontrol edilir?',
+    answer: 'Süre ve bütçe kontrolü; başlangıç keşfi, iş kırılımı, haftalık ilerleme takibi ve onaylı değişiklik yönetimi ile yapılır. Bu sistem, maliyet sapmalarını azaltır ve projenin planlanan tarihte teslim edilmesini kolaylaştırır.',
+    category: 'Anahtar Teslim',
+  },
 ];
 
 const faqCategories = [
@@ -73,12 +109,15 @@ const faqCategories = [
   { id: 'su-yalitim', key: 'Su Yalıtım', title: 'Su Yalıtım Hizmetleri', helper: 'Uygulama alanları, garanti ve teknik detaylar' },
   { id: 'zemin-kaplama', key: 'Zemin Kaplama', title: 'Zemin Kaplama Sistemleri', helper: 'Epoxy çözümler, kuruma süresi ve kullanım alanları' },
   { id: 'yapi-kimyasallari', key: 'Yapı Kimyasalları', title: 'Yapı Kimyasalları', helper: 'Malzeme tipleri ve doğru kullanım senaryoları' },
+  { id: 'mantolama-cati', key: 'Mantolama & Çatı', title: 'Mantolama ve Çatı Sistemleri', helper: 'Isı verimliliği, havalandırma ve çatı yenileme detayları' },
+  { id: 'ic-mekan-uygulamalari', key: 'İç Mekan Uygulamaları', title: 'İç Mekan Uygulamaları', helper: 'Tadilat, boya ve alçıpan uygulama soruları' },
+  { id: 'anahtar-teslim', key: 'Anahtar Teslim', title: 'Anahtar Teslim Proje Yönetimi', helper: 'Kapsam, koordinasyon ve teslim süreci' },
 ];
 ---
 
 <BaseLayout
   title="Sıkça Sorulan Sorular - Process"
-  description="Process hizmetleri hakkında sıkça sorulan soruları ve cevapları inceleyin. Güçlendirme, su yalıtım, zemin kaplama ve yapı kimyasalları hakkında merak ettikleriniz."
+  description="Kayseri mantolama, çatı yenileme, iç cephe boya, alçıpan ve anahtar teslim tadilat hizmetleri hakkında sıkça sorulan sorular ve net cevaplar."
 >
   <Section bgColor="gray">
     <div class="py-20">
@@ -90,7 +129,7 @@ const faqCategories = [
           Sıkça Sorulan Sorular
         </h1>
         <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          Güçlendirme, su yalıtım, zemin kaplama ve yapı kimyasalları hakkında en çok sorulan soruları
+          Kayseri’de mantolama, çatı yenileme, iç mekan uygulamaları ve anahtar teslim tadilat süreçleri hakkında en çok sorulan soruları
           tek bir sayfada topladık.
         </p>
       </div>

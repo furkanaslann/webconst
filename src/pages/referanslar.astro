@@ -4,6 +4,16 @@ import Section from '../presentation/components/ui/Section.astro';
 import References from '../presentation/components/References.astro';
 import type { Reference } from '../presentation/components/References.astro';
 
+const categoryImages: Record<string, string> = {
+  // Royalty-free sample images (stable Picsum URLs)
+  'Güçlendirme': 'https://picsum.photos/id/1048/1200/800',
+  'Su Yalıtım': 'https://picsum.photos/id/1068/1200/800',
+  'Zemin Kaplama': 'https://picsum.photos/id/1039/1200/800',
+  'Çatı Sistemleri': 'https://picsum.photos/id/1056/1200/800',
+  'İç Mekan Uygulamaları': 'https://picsum.photos/id/1060/1200/800',
+  'Anahtar Teslim': 'https://picsum.photos/id/1076/1200/800',
+};
+
 const references: Reference[] = [
   {
     id: '1',
@@ -12,6 +22,7 @@ const references: Reference[] = [
     year: '2023',
     category: 'Güçlendirme',
     description: '5 katlı plazanın deprem yönetmeliğine uygun olarak güçlendirilmesi projesi.',
+    image: categoryImages['Güçlendirme'],
   },
   {
     id: '2',
@@ -20,6 +31,7 @@ const references: Reference[] = [
     year: '2023',
     category: 'Su Yalıtım',
     description: 'Kapalı yüzme havuzunun polyurea sistemle su yalıtım uygulaması.',
+    image: categoryImages['Su Yalıtım'],
   },
   {
     id: '3',
@@ -28,6 +40,7 @@ const references: Reference[] = [
     year: '2022',
     category: 'Zemin Kaplama',
     description: '5000m² fabrika alanına 3mm kalınlığında epoxy zemin kaplama uygulaması.',
+    image: categoryImages['Zemin Kaplama'],
   },
   {
     id: '4',
@@ -36,6 +49,7 @@ const references: Reference[] = [
     year: '2022',
     category: 'Su Yalıtım',
     description: 'Hastane teras katının sıcak ve soğuk su yalıtımı uygulaması.',
+    image: categoryImages['Su Yalıtım'],
   },
   {
     id: '5',
@@ -44,6 +58,7 @@ const references: Reference[] = [
     year: '2021',
     category: 'Zemin Kaplama',
     description: 'Alışveriş merkezi otoparkına polüretan zemin kaplama ve çizgi uygulaması.',
+    image: categoryImages['Zemin Kaplama'],
   },
   {
     id: '6',
@@ -52,6 +67,7 @@ const references: Reference[] = [
     year: '2021',
     category: 'Su Yalıtım',
     description: 'LuxSite perde duvarların dranajlı su yalıtım uygulaması.',
+    image: categoryImages['Su Yalıtım'],
   },
   {
     id: '7',
@@ -60,6 +76,7 @@ const references: Reference[] = [
     year: '2020',
     category: 'Güçlendirme',
     description: 'Endüstriyel binanın taşıyıcı sisteminin güçlendirilmesi.',
+    image: categoryImages['Güçlendirme'],
   },
   {
     id: '8',
@@ -68,6 +85,7 @@ const references: Reference[] = [
     year: '2020',
     category: 'Zemin Kaplama',
     description: 'Kapalı spor salonuna kendinden yaylı zemin kaplama uygulaması.',
+    image: categoryImages['Zemin Kaplama'],
   },
   {
     id: '9',
@@ -76,6 +94,34 @@ const references: Reference[] = [
     year: '2019',
     category: 'Su Yalıtım',
     description: 'Toplu konut projesinde temel perde duvar yalıtım uygulaması.',
+    image: categoryImages['Su Yalıtım'],
+  },
+  {
+    id: '10',
+    title: 'Talas Konut Çatı Yenileme',
+    location: 'Kayseri',
+    year: '2024',
+    category: 'Çatı Sistemleri',
+    description: 'Toplu konut bloklarında çatı kaplama, ısı yalıtımı ve yağmur suyu drenaj hattı yenilemesi.',
+    image: categoryImages['Çatı Sistemleri'],
+  },
+  {
+    id: '11',
+    title: 'Kurumsal Ofis İç Mekan Dönüşüm',
+    location: 'Ankara',
+    year: '2024',
+    category: 'İç Mekan Uygulamaları',
+    description: 'Alçıpan bölme, asma tavan, dekoratif boya ve aydınlatma revizyonuyla ofis alanlarının dönüşümü.',
+    image: categoryImages['İç Mekan Uygulamaları'],
+  },
+  {
+    id: '12',
+    title: 'Butik Otel Anahtar Teslim Renovasyon',
+    location: 'Nevşehir',
+    year: '2023',
+    category: 'Anahtar Teslim',
+    description: 'Mekanik altyapı, ince işler, zemin kaplama ve iç mimari uygulamaların tek elden yönetildiği dönüşüm.',
+    image: categoryImages['Anahtar Teslim'],
   },
 ];
 ---
@@ -128,11 +174,32 @@ const references: Reference[] = [
           >
             Zemin Kaplama
           </button>
+          <button
+            class="filter-btn px-4 py-2 rounded-xl border border-gray-200 bg-white text-gray-700 font-medium hover:border-accent-300 hover:bg-accent-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-500 cursor-pointer"
+            data-filter="cati-sistemleri"
+            aria-pressed="false"
+          >
+            Çatı Sistemleri
+          </button>
+          <button
+            class="filter-btn px-4 py-2 rounded-xl border border-gray-200 bg-white text-gray-700 font-medium hover:border-accent-300 hover:bg-accent-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-500 cursor-pointer"
+            data-filter="ic-mekan-uygulamalari"
+            aria-pressed="false"
+          >
+            İç Mekan
+          </button>
+          <button
+            class="filter-btn px-4 py-2 rounded-xl border border-gray-200 bg-white text-gray-700 font-medium hover:border-accent-300 hover:bg-accent-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-500 cursor-pointer"
+            data-filter="anahtar-teslim"
+            aria-pressed="false"
+          >
+            Anahtar Teslim
+          </button>
         </div>
       </div>
 
       <p id="filter-result-info" class="text-center text-sm md:text-base text-gray-600 mb-10 animate-on-scroll" style="transition-delay: 150ms">
-        9 referans projesi listeleniyor.
+        {references.length} referans projesi listeleniyor.
       </p>
 
       <div id="references-grid" class="references-grid">

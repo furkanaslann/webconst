@@ -79,7 +79,8 @@ const {
             autoplay: {
               delay: autoplayDelay,
               disableOnInteraction: false,
-              pauseOnMouseEnter: true,
+              pauseOnMouseEnter: false,
+              waitForTransition: false,
             },
             pagination: showPagination ? {
               el: '.swiper-pagination',
@@ -93,12 +94,15 @@ const {
             fadeEffect: {
               crossFade: true,
             },
-            speed: 800,
+            speed: 650,
           }}
           class="hero-swiper"
+          data-autoplay-delay={autoplayDelay}
+          aria-live="polite"
+          aria-label="Öne çıkan hizmet görselleri"
         >
           <SwiperWrapper>
-            {heroSlides.map((slide) => (
+            {heroSlides.map((slide, index) => (
               <SwiperSlide>
                 <div class="aspect-video bg-gradient-to-br from-secondary-100 via-neutral-100 to-accent-100 rounded-2xl flex items-center justify-center overflow-hidden relative">
                   <!-- Background Görsel -->
@@ -106,14 +110,26 @@ const {
                     src={slide.image}
                     alt={slide.title}
                     class="absolute inset-0 w-full h-full object-cover"
-                    loading="lazy"
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    fetchpriority={index === 0 ? 'high' : 'auto'}
                   />
                   <!-- Gradient Overlay -->
-                  <div class="absolute inset-0 bg-gradient-to-br from-secondary-100/10 via-neutral-100/20 to-accent-100/10"></div>
+                  <div class="absolute inset-0 bg-gradient-to-br from-black/60 via-black/35 to-black/50"></div>
                   <!-- Üzerinde Kart İçeriği -->
-                  <div class="hero-slide-card absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center p-8 bg-white/50 backdrop-blur-md rounded-2xl shadow-xl max-w-lg">
-                    <h3 class="hero-slide-title text-2xl md:text-3xl font-bold text-gray-900 mb-3">{slide.title}</h3>
-                    <p class="hero-slide-description text-gray-600 text-sm leading-relaxed">{slide.description}</p>
+                  <div class="hero-slide-card absolute left-1/2 top-1/2 w-[min(92%,36rem)] -translate-x-1/2 -translate-y-1/2 text-left p-5 md:p-7 rounded-2xl md:w-[min(90%,36rem)]">
+                    <p class="hero-slide-kicker mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-accent-600">Uzman Uygulama</p>
+                    <h3 class="hero-slide-title text-xl md:text-4xl font-bold text-slate-950 mb-3">{slide.title}</h3>
+                    <p class="hero-slide-description text-slate-700 text-sm md:text-base leading-relaxed">{slide.description}</p>
+                    <div class="mt-4 flex flex-wrap items-center gap-2">
+                      <span class="inline-flex min-h-[32px] items-center rounded-full border border-accent-200 bg-accent-50 px-3 text-xs font-semibold text-accent-800">20+ Yıl Tecrübe</span>
+                      <span class="inline-flex min-h-[32px] items-center rounded-full border border-slate-200 bg-white px-3 text-xs font-semibold text-slate-700">500+ Proje</span>
+                    </div>
+                    <a
+                      href={slide.ctaLink ?? cta2Link}
+                      class="mt-5 inline-flex min-h-[44px] items-center rounded-lg bg-accent-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-accent-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-700 focus-visible:ring-offset-2 cursor-pointer"
+                    >
+                      {slide.ctaText ?? cta2Text}
+                    </a>
                   </div>
                 </div>
               </SwiperSlide>
@@ -128,6 +144,9 @@ const {
             </>
           )}
         </Swiper>
+        <div class="hero-progress" aria-hidden="true">
+          <span class="hero-progress-bar"></span>
+        </div>
       </div>
     )}
   </div>
@@ -141,21 +160,34 @@ const {
   :global(.hero-swiper .swiper-pagination-bullet-active) {
     background: white;
   }
+  :global(.hero-swiper .swiper-button-prev),
+  :global(.hero-swiper .swiper-button-next) {
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 9999px;
+    backdrop-filter: blur(2px);
+  }
+  :global(.hero-swiper .swiper-button-prev:after),
+  :global(.hero-swiper .swiper-button-next:after) {
+    font-size: 16px;
+  }
 
   /* Slide Card Animations */
   .hero-slide-card {
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 0 16px 45px rgba(15, 23, 42, 0.28);
+    backdrop-filter: blur(4px);
     opacity: 0;
-    transform: translate(-50%, -40%);
   }
 
   .hero-slide-card.animate {
-    animation: slideCardFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: slideCardFadeIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   @keyframes slideCardFadeIn {
     to {
       opacity: 1;
-      transform: translate(-50%, -50%);
     }
   }
 
@@ -184,18 +216,69 @@ const {
     animation: slideDescFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
   }
 
+  .hero-slide-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.88));
+    z-index: -1;
+  }
+
   @keyframes slideDescFadeIn {
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
+
+  .hero-progress {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0.75rem;
+    z-index: 15;
+    height: 4px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.35);
+    overflow: hidden;
+  }
+
+  .hero-progress-bar {
+    display: block;
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: white;
+    transition: width 120ms linear;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-slide-card,
+    .hero-slide-title,
+    .hero-slide-description {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+      transition: none !important;
+    }
+
+    .hero-progress-bar {
+      transition: none !important;
+    }
+  }
 </style>
 
 <script>
   function initSlideAnimations() {
-    const swiper = document.querySelector('.hero-swiper');
+    const swiper = document.querySelector('.hero-swiper') as HTMLElement | null;
     if (!swiper) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const progressBar = document.querySelector('.hero-progress-bar') as HTMLElement | null;
+    const autoplayDelayValue = Number(swiper.getAttribute('data-autoplay-delay')) || 5000;
+    let progressTimer: number | null = null;
+    let progressStart = 0;
+    const isPaused = reduceMotion;
 
     const animateActiveSlide = () => {
       // Remove animation from all cards
@@ -208,16 +291,48 @@ const {
       if (activeCard) {
         // Force reflow to restart animation
         void (activeCard as HTMLElement).offsetWidth;
-        activeCard.classList.add('animate');
+        if (!reduceMotion) {
+          activeCard.classList.add('animate');
+        } else {
+          activeCard.classList.remove('animate');
+        }
       }
+    };
+
+    const stopProgress = () => {
+      if (progressTimer) {
+        window.cancelAnimationFrame(progressTimer);
+        progressTimer = null;
+      }
+    };
+
+    const startProgress = () => {
+      if (!progressBar) return;
+      stopProgress();
+      progressBar.style.width = '0%';
+      if (isPaused || reduceMotion) return;
+      progressStart = performance.now();
+
+      const tick = (now: number) => {
+        const elapsed = now - progressStart;
+        const percent = Math.min((elapsed / autoplayDelayValue) * 100, 100);
+        progressBar.style.width = `${percent}%`;
+        if (percent < 100 && !isPaused) {
+          progressTimer = window.requestAnimationFrame(tick);
+        }
+      };
+
+      progressTimer = window.requestAnimationFrame(tick);
     };
 
     // Initial animation
     setTimeout(animateActiveSlide, 100);
+    startProgress();
 
     // Watch for slide changes
     const observer = new MutationObserver(() => {
       animateActiveSlide();
+      startProgress();
     });
 
     // Observe slide class changes

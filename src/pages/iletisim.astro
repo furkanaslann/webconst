@@ -62,14 +62,18 @@ const quickActions = [
         </div>
 
         <div class="grid xl:grid-cols-[1.1fr_0.9fr] gap-8 md:gap-10">
-          <div class="animate-slide-left rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
-            <h2 class="text-2xl font-bold text-gray-900 mb-2">
-              İletişim Formu
-            </h2>
-            <p class="text-sm text-gray-600 mb-6">
-              Aşağıdaki alanları doldurun. Formunuz alındığında size e-posta veya telefon ile dönüş yaparız.
-            </p>
-            <ContactForm client:load />
+          <div class="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
+            <div class="animate-slide-left">
+              <h2 class="text-2xl font-bold text-gray-900 mb-2">
+                İletişim Formu
+              </h2>
+              <p class="text-sm text-gray-600 mb-6">
+                Aşağıdaki alanları doldurun. Formunuz alındığında size e-posta veya telefon ile dönüş yaparız.
+              </p>
+            </div>
+            <div class="contact-form-root">
+              <ContactForm client:load />
+            </div>
           </div>
 
           <div class="animate-slide-right space-y-6">
@@ -197,6 +201,11 @@ const quickActions = [
 </BaseLayout>
 
 <style>
+  /* React island varsayılanı display:contents; opacity/transform animasyonlarıyla birlikte bazı tarayıcılarda form kaybolabiliyor */
+  :global(.contact-form-root astro-island) {
+    display: block !important;
+  }
+
   .contact-info-item {
     opacity: 0;
     transform: translateX(20px);

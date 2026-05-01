@@ -58,11 +58,9 @@ const processSteps = [
         <div class="grid gap-8 lg:grid-cols-[320px,1fr] lg:items-start">
           <aside class="quick-nav-wrap animate-fade lg:sticky lg:top-28">
             <div class="rounded-2xl border border-accent-100 bg-gradient-to-b from-white to-accent-50/40 p-4 md:p-5 shadow-sm">
-              <div class="mb-4 rounded-xl border border-accent-100 bg-white/90 p-3">
+              <div class="mb-4 inline-flex rounded-xl border border-accent-100 bg-white/90 px-4 py-3" style="border-color: rgb(252 165 165);">
                 <p class="text-xs font-semibold uppercase tracking-wide text-accent-700">Hızlı Erişim</p>
-                <h2 class="mt-1 text-base md:text-lg font-bold text-gray-900">Hızlı hizmet seçimi</h2>
-                <p class="mt-1 text-sm text-gray-600">Kategoriden hizmet seçerek ilgili bölüme anında geçin.</p>
-              </div>
+               </div>
               <div class="space-y-3">
                 {groupedServices.map((group, groupIndex) => (
                   <details class="quick-nav-accordion rounded-xl border border-gray-200 bg-gray-50" open={groupIndex === 0} data-group-id={group.id}>
