@@ -113,7 +113,7 @@ export default function ContactForm({ formName = 'contact' }: ContactFormProps) 
               name="firstName"
               value={formData.firstName}
               onChange={handleInputChange}
-              placeholder="Adınızı girin"
+              placeholder="Mehmet"
               className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:border-transparent transition-colors motion-reduce:transition-none ${
                 errors.firstName ? 'border-red-500' : 'border-gray-300'
               }`}
@@ -136,7 +136,7 @@ export default function ContactForm({ formName = 'contact' }: ContactFormProps) 
               name="lastName"
               value={formData.lastName}
               onChange={handleInputChange}
-              placeholder="Soyadınızı girin"
+              placeholder="Yılmaz"
               className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:border-transparent transition-colors motion-reduce:transition-none ${
                 errors.lastName ? 'border-red-500' : 'border-gray-300'
               }`}
@@ -160,7 +160,7 @@ export default function ContactForm({ formName = 'contact' }: ContactFormProps) 
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            placeholder="ornek@domain.com"
+            placeholder="ornek@gmail.com"
             className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:border-transparent transition-colors motion-reduce:transition-none ${
               errors.email ? 'border-red-500' : 'border-gray-300'
             }`}
