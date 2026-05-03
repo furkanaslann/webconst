@@ -117,15 +117,25 @@ const processSteps = [
                           <div class={index % 2 === 1 ? 'md:order-2' : ''}>
                             <div class="service-image-wrap service-image rounded-2xl bg-gradient-to-br from-slate-100 to-slate-50 p-[2px] shadow-[0_8px_30px_rgba(15,23,42,0.12)]">
                               <div class="aspect-[4/3] overflow-hidden rounded-[0.875rem] bg-neutral-100">
-                                <Image
-                                  src={service.image}
-                                  alt={`${service.title} hizmet görseli`}
-                                  class="service-image-photo h-full w-full object-cover"
-                                  width={1200}
-                                  height={900}
-                                  sizes="(max-width: 767px) 100vw, 50vw"
-                                  loading="lazy"
-                                />
+                                <button
+                                  type="button"
+                                  class="h-full w-full cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/90 focus-visible:ring-offset-2 focus-visible:ring-offset-black/20"
+                                  data-lightbox-item
+                                  data-lightbox-group={`service-${service.slug}`}
+                                  data-lightbox-src={service.image.src}
+                                  data-lightbox-alt={`${service.title} hizmet görseli`}
+                                  aria-label={`${service.title} görselini büyüt`}
+                                >
+                                  <Image
+                                    src={service.image}
+                                    alt={`${service.title} hizmet görseli`}
+                                    class="service-image-photo h-full w-full object-cover"
+                                    width={1200}
+                                    height={900}
+                                    sizes="(max-width: 767px) 100vw, 50vw"
+                                    loading="lazy"
+                                  />
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -516,6 +526,7 @@ const processSteps = [
 
 <script>
   import { observeScrollAnimations } from '../presentation/utils/animations';
+  import { initIsolatedImageLightbox } from '../presentation/utils/imageLightbox';
 
   function initAnimations() {
     observeScrollAnimations('.animate-on-scroll');
@@ -621,8 +632,11 @@ const processSteps = [
         });
       });
     });
+
+    initIsolatedImageLightbox();
   }
 
   document.addEventListener('DOMContentLoaded', initAnimations);
+  document.addEventListener('astro:page-load', initAnimations);
   initAnimations();
 </script>

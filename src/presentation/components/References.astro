@@ -47,15 +47,28 @@ const slugifyCategory = (category: string) =>
       <div class="reference-card-lift">
         <div class="aspect-video bg-gradient-to-br from-secondary-100 via-neutral-100 to-accent-100 flex items-center justify-center relative overflow-hidden reference-image">
         {ref.image ? (
-          <Image
-            src={ref.image}
-            alt={ref.title}
-            class="h-full w-full object-cover"
-            sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-            loading="lazy"
-            width={1200}
-            height={800}
-          />
+          <button
+            type="button"
+            class="h-full w-full cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/90 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30"
+            data-lightbox-item
+            data-lightbox-group={`reference-${ref.id}`}
+            data-lightbox-src={ref.image.src}
+            data-lightbox-alt={ref.title}
+            data-lightbox-title={ref.title}
+            data-lightbox-meta={`${ref.location} • ${ref.year} • ${ref.category}`}
+            data-lightbox-description={ref.description}
+            aria-label={`${ref.title} görselini büyüt`}
+          >
+            <Image
+              src={ref.image}
+              alt={ref.title}
+              class="h-full w-full object-cover"
+              sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+              loading="lazy"
+              width={1200}
+              height={800}
+            />
+          </button>
         ) : (
           <div class="text-center p-6">
             <svg class="w-16 h-16 text-primary-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -168,6 +181,8 @@ const slugifyCategory = (category: string) =>
 </style>
 
 <script>
+  import { initIsolatedImageLightbox } from '../utils/imageLightbox';
+
   function parseCssTimeMs(value: string): number {
     const v = value.trim();
     if (!v) return 0;
@@ -216,6 +231,12 @@ const slugifyCategory = (category: string) =>
     cards.forEach((card) => observer.observe(card));
   }
 
-  document.addEventListener('DOMContentLoaded', initReferenceAnimations);
-  initReferenceAnimations();
+  function initReferencesBlock(): void {
+    initReferenceAnimations();
+    initIsolatedImageLightbox();
+  }
+
+  document.addEventListener('DOMContentLoaded', initReferencesBlock);
+  document.addEventListener('astro:page-load', initReferencesBlock);
+  initReferencesBlock();
 </script>
