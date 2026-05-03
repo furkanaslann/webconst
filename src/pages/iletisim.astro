@@ -5,8 +5,8 @@ import Section from '../presentation/components/ui/Section.astro';
 
 const contactInfo = {
   address: 'Mimarsinan OSB 1. Cad. No:4, Melikgazi / Kayseri',
-  phone: '+90 532 000 00 00',
-  email: 'info@process.com.tr',
+  phones: ['+905012420038', '+905446286492'],
+  email: 'furkanb007@icloud.com',
   workingHours: 'Pazartesi - Cumartesi: 08:00 - 18:00',
 };
 
@@ -14,7 +14,7 @@ const quickActions = [
   {
     title: 'Hemen Ara',
     description: 'Uzman ekibimizle telefonla doğrudan iletişime geçin.',
-    href: `tel:${contactInfo.phone.replace(/\s/g, '')}`,
+    href: `tel:${contactInfo.phones[0]}`,
     cta: 'Telefonla ulaş',
   },
   {
@@ -98,22 +98,23 @@ const quickActions = [
                   </div>
                 </div>
 
-                <div class="flex items-start contact-info-item" style="transition-delay: 100ms">
-                  <div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mr-4">
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  class="contact-info-item flex items-center rounded-lg outline-none transition-colors hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 -mx-2 px-2 py-1 group"
+                  style="transition-delay: 100ms"
+                  aria-label="E-posta gönder"
+                >
+                  <div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mr-4 pointer-events-none">
                     <svg class="w-6 h-6 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                     </svg>
                   </div>
-                  <div>
-                    <h3 class="font-semibold text-gray-900 mb-1">E-posta</h3>
-                    <a
-                      href={`mailto:${contactInfo.email}`}
-                      class="text-accent-700 hover:text-accent-800 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-sm"
-                    >
-                      {contactInfo.email}
-                    </a>
+                  <div class="min-w-0 pointer-events-none">
+                    <h3 class="font-semibold text-gray-900 underline-offset-2 group-hover:underline group-hover:text-accent-700">
+                      E-posta
+                    </h3>
                   </div>
-                </div>
+                </a>
 
                 <div class="flex items-start contact-info-item" style="transition-delay: 200ms">
                   <div class="flex-shrink-0 w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center mr-4">
@@ -123,12 +124,16 @@ const quickActions = [
                   </div>
                   <div>
                     <h3 class="font-semibold text-gray-900 mb-1">Telefon</h3>
-                    <a
-                      href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}
-                      class="text-accent-700 hover:text-accent-800 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-sm"
-                    >
-                      {contactInfo.phone}
-                    </a>
+                    <div class="space-y-1">
+                      {contactInfo.phones.map((phone) => (
+                        <a
+                          href={`tel:${phone}`}
+                          class="block text-accent-700 hover:text-accent-800 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-sm"
+                        >
+                          {phone}
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
@@ -183,7 +188,7 @@ const quickActions = [
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
           <a
-            href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}
+            href={`tel:${contactInfo.phones[0]}`}
             class="inline-flex items-center justify-center rounded-lg bg-white text-primary-700 px-8 py-3 font-semibold hover:bg-gray-100 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-700"
           >
             Hemen Ara

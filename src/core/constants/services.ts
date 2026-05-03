@@ -1,3 +1,5 @@
+import { hizmetPhotoUrls, serviceImageUrls } from './serviceImages';
+
 export interface Service {
   id: string;
   title: string;
@@ -16,7 +18,7 @@ export const services: Service[] = [
     description: 'Binaların deprem yönetmeliğine uygun olarak güçlendirilmesi ve yapısal performans artırımı hizmetleri',
     icon: 'building',
     slug: 'guclendirme-calismalari',
-    image: '/docs/images/Güçlendirme Çalışmal.png',
+    image: hizmetPhotoUrls.guclendirme,
     features: [
       'Bina Güçlendirme',
       'Deprem Analizi',
@@ -32,7 +34,7 @@ export const services: Service[] = [
     description: 'Tüm yapı elemanları için profesyonel su yalıtım çözümleri ve uygulamaları',
     icon: 'water',
     slug: 'su-yalitim',
-    image: '/docs/images/Su Yalıtım Hizmetler.png',
+    image: hizmetPhotoUrls.suYalitim,
     features: [
       'Temel Su Yalıtımı',
       'Teras ve Balkon Yalıtımı',
@@ -48,7 +50,7 @@ export const services: Service[] = [
     description: 'Endüstriyel ve ticari alanlar için dayanıklı zemin kaplama çözümleri',
     icon: 'flooring',
     slug: 'zemin-kaplama',
-    image: '/docs/images/Zemin Kaplama Sistem.png',
+    image: hizmetPhotoUrls.zeminKaplama,
     features: [
       'Epoxy Zemin Kaplama',
       'Poliüretan Kaplama',
@@ -64,7 +66,7 @@ export const services: Service[] = [
     description: 'Yapı sektöründe kullanılan tüm kimyasal ürünler ve uygulama hizmetleri',
     icon: 'chemical',
     slug: 'yapi-kimyasallari',
-    image: '/docs/images/Yapı Kimyasallar.png',
+    image: serviceImageUrls.yapiKimyasallari,
     features: [
       'Silan & Siloksan',
       'Sızdırmazlık Malzemeleri',
@@ -80,7 +82,7 @@ export const services: Service[] = [
     description: 'Konut ve ticari alanlarda mekanın ihtiyaçlarına uygun kapsamlı tadilat ve modernizasyon uygulamaları',
     icon: 'renovation',
     slug: 'tadilat-ve-yenileme',
-    image: '/docs/images/Zemin Kaplama Sistem.png',
+    image: hizmetPhotoUrls.tadilatYenileme,
     features: [
       'Banyo ve Mutfak Yenileme',
       'İç Mekan Fonksiyonel Dönüşüm',
@@ -96,7 +98,7 @@ export const services: Service[] = [
     description: 'Yüzeye ve kullanım senaryosuna uygun profesyonel boya çözümleriyle uzun ömürlü ve estetik sonuçlar',
     icon: 'paint',
     slug: 'ic-dis-cephe-boya',
-    image: '/docs/images/Güçlendirme Çalışmal.png',
+    image: hizmetPhotoUrls.cepheBoyama,
     features: [
       'İç Cephe Boya Uygulamaları',
       'Dış Cephe Dayanımlı Boyalar',
@@ -112,7 +114,7 @@ export const services: Service[] = [
     description: 'Bölme, kaplama ve tavan çözümlerinde düzgün yüzey, estetik görünüm ve hızlı uygulama sağlayan sistemler',
     icon: 'interior',
     slug: 'alci-alcipan-betopan',
-    image: '/docs/images/Su Yalıtım Hizmetler.png',
+    image: hizmetPhotoUrls.alciAlcipan,
     features: [
       'Asma Tavan Uygulamaları',
       'Bölme Duvar Sistemleri',
@@ -128,7 +130,7 @@ export const services: Service[] = [
     description: 'Enerji verimliliğini artıran ve yapı kabuğunu koruyan dış cephe mantolama sistemlerinin projelendirme ve uygulaması',
     icon: 'insulation',
     slug: 'dis-cephe-mantolama-isi-yalitimi',
-    image: '/docs/images/Su Yalıtım Hizmetler.png',
+    image: hizmetPhotoUrls.cepheMantolama,
     features: [
       'EPS ve Taş Yünü Sistemleri',
       'Cephe Isı Köprüsü Analizi',
@@ -144,7 +146,7 @@ export const services: Service[] = [
     description: 'Yeni yapılarda çatı sistem kurulumu ve mevcut yapılarda su-ısı performansını artıran yenileme çözümleri',
     icon: 'roof',
     slug: 'cati-yapimi-ve-yenileme',
-    image: '/docs/images/Su Yalıtım Hizmetler.png',
+    image: hizmetPhotoUrls.catiYenileme,
     features: [
       'Yeni Çatı Sistem Kurulumu',
       'Çatı Su Yalıtımı Revizyonu',
@@ -160,7 +162,7 @@ export const services: Service[] = [
     description: 'Keşiften teslimata kadar tüm teknik ve operasyonel süreci tek noktadan yöneten bütüncül proje hizmeti',
     icon: 'turnkey',
     slug: 'anahtar-teslim-proje-yonetimi',
-    image: '/docs/images/Güçlendirme Çalışmal.png',
+    image: hizmetPhotoUrls.anahtarTeslim,
     features: [
       'Keşif ve İhtiyaç Analizi',
       'Uygulama Takvimi ve Bütçe Planı',

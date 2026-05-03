@@ -3,16 +3,10 @@ import BaseLayout from '../presentation/layouts/BaseLayout.astro';
 import Section from '../presentation/components/ui/Section.astro';
 import References from '../presentation/components/References.astro';
 import type { Reference } from '../presentation/components/References.astro';
+import { referenceImageUrls } from '../core/constants/referenceImages';
 
-const categoryImages: Record<string, string> = {
-  // Royalty-free sample images (stable Picsum URLs)
-  'Güçlendirme': 'https://picsum.photos/id/1048/1200/800',
-  'Su Yalıtım': 'https://picsum.photos/id/1068/1200/800',
-  'Zemin Kaplama': 'https://picsum.photos/id/1039/1200/800',
-  'Çatı Sistemleri': 'https://picsum.photos/id/1056/1200/800',
-  'İç Mekan Uygulamaları': 'https://picsum.photos/id/1060/1200/800',
-  'Anahtar Teslim': 'https://picsum.photos/id/1076/1200/800',
-};
+const [gucRef1, gucRef2] = referenceImageUrls.guclendirme;
+const [zemRef1, zemRef2, zemRef3] = referenceImageUrls.zeminKaplama;
 
 const references: Reference[] = [
   {
@@ -22,7 +16,7 @@ const references: Reference[] = [
     year: '2023',
     category: 'Güçlendirme',
     description: '5 katlı plazanın deprem yönetmeliğine uygun olarak güçlendirilmesi projesi.',
-    image: categoryImages['Güçlendirme'],
+    image: gucRef1,
   },
   {
     id: '2',
@@ -31,7 +25,7 @@ const references: Reference[] = [
     year: '2023',
     category: 'Su Yalıtım',
     description: 'Kapalı yüzme havuzunun polyurea sistemle su yalıtım uygulaması.',
-    image: categoryImages['Su Yalıtım'],
+    image: referenceImageUrls.suYalitim,
   },
   {
     id: '3',
@@ -40,7 +34,7 @@ const references: Reference[] = [
     year: '2022',
     category: 'Zemin Kaplama',
     description: '5000m² fabrika alanına 3mm kalınlığında epoxy zemin kaplama uygulaması.',
-    image: categoryImages['Zemin Kaplama'],
+    image: zemRef1,
   },
   {
     id: '4',
@@ -49,7 +43,7 @@ const references: Reference[] = [
     year: '2022',
     category: 'Su Yalıtım',
     description: 'Hastane teras katının sıcak ve soğuk su yalıtımı uygulaması.',
-    image: categoryImages['Su Yalıtım'],
+    image: referenceImageUrls.suYalitim,
   },
   {
     id: '5',
@@ -58,7 +52,7 @@ const references: Reference[] = [
     year: '2021',
     category: 'Zemin Kaplama',
     description: 'Alışveriş merkezi otoparkına polüretan zemin kaplama ve çizgi uygulaması.',
-    image: categoryImages['Zemin Kaplama'],
+    image: zemRef2,
   },
   {
     id: '6',
@@ -67,7 +61,7 @@ const references: Reference[] = [
     year: '2021',
     category: 'Su Yalıtım',
     description: 'LuxSite perde duvarların dranajlı su yalıtım uygulaması.',
-    image: categoryImages['Su Yalıtım'],
+    image: referenceImageUrls.suYalitim,
   },
   {
     id: '7',
@@ -76,7 +70,7 @@ const references: Reference[] = [
     year: '2020',
     category: 'Güçlendirme',
     description: 'Endüstriyel binanın taşıyıcı sisteminin güçlendirilmesi.',
-    image: categoryImages['Güçlendirme'],
+    image: gucRef2,
   },
   {
     id: '8',
@@ -85,7 +79,7 @@ const references: Reference[] = [
     year: '2020',
     category: 'Zemin Kaplama',
     description: 'Kapalı spor salonuna kendinden yaylı zemin kaplama uygulaması.',
-    image: categoryImages['Zemin Kaplama'],
+    image: zemRef3,
   },
   {
     id: '9',
@@ -94,7 +88,7 @@ const references: Reference[] = [
     year: '2019',
     category: 'Su Yalıtım',
     description: 'Toplu konut projesinde temel perde duvar yalıtım uygulaması.',
-    image: categoryImages['Su Yalıtım'],
+    image: referenceImageUrls.suYalitim,
   },
   {
     id: '10',
@@ -103,7 +97,7 @@ const references: Reference[] = [
     year: '2024',
     category: 'Çatı Sistemleri',
     description: 'Toplu konut bloklarında çatı kaplama, ısı yalıtımı ve yağmur suyu drenaj hattı yenilemesi.',
-    image: categoryImages['Çatı Sistemleri'],
+    image: referenceImageUrls.cati,
   },
   {
     id: '11',
@@ -112,16 +106,16 @@ const references: Reference[] = [
     year: '2024',
     category: 'İç Mekan Uygulamaları',
     description: 'Alçıpan bölme, asma tavan, dekoratif boya ve aydınlatma revizyonuyla ofis alanlarının dönüşümü.',
-    image: categoryImages['İç Mekan Uygulamaları'],
+    image: referenceImageUrls.icMekan,
   },
   {
     id: '12',
-    title: 'Butik Otel Anahtar Teslim Renovasyon',
-    location: 'Nevşehir',
+    title: 'Niğde Bor Ferbis',
+    location: 'Niğde',
     year: '2023',
     category: 'Anahtar Teslim',
     description: 'Mekanik altyapı, ince işler, zemin kaplama ve iç mimari uygulamaların tek elden yönetildiği dönüşüm.',
-    image: categoryImages['Anahtar Teslim'],
+    image: referenceImageUrls.nigdeBorFerbis,
   },
 ];
 ---

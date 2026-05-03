@@ -70,19 +70,21 @@ const processSteps = [
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                       </svg>
                     </summary>
-                    <nav aria-label={`${group.title} hizmetleri`} class="px-3 pb-3 space-y-2">
-                      {group.services.map((service) => (
-                        <a
-                          href={`#${service.slug}`}
-                          class="quick-nav-link"
-                          data-service-link
-                          data-target={service.slug}
-                          data-group-id={group.id}
-                        >
-                          {service.title}
-                        </a>
-                      ))}
-                    </nav>
+                    <div class="quick-nav-panel">
+                      <nav aria-label={`${group.title} hizmetleri`} class="quick-nav-panel-content px-3 pb-3 space-y-2">
+                        {group.services.map((service) => (
+                          <a
+                            href={`#${service.slug}`}
+                            class="quick-nav-link"
+                            data-service-link
+                            data-target={service.slug}
+                            data-group-id={group.id}
+                          >
+                            {service.title}
+                          </a>
+                        ))}
+                      </nav>
+                    </div>
                   </details>
                 ))}
               </div>
@@ -419,6 +421,28 @@ const processSteps = [
     display: none;
   }
 
+  .quick-nav-accordion > .quick-nav-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+    opacity: 0;
+  }
+
+  .quick-nav-panel-content {
+    overflow: hidden;
+    transform: translateY(-2px);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .quick-nav-accordion[open] > .quick-nav-panel {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .quick-nav-accordion[open] .quick-nav-panel-content {
+    transform: translateY(0);
+  }
+
   .quick-nav-chevron {
     width: 1rem;
     height: 1rem;
@@ -477,7 +501,9 @@ const processSteps = [
     .service-features-title,
     .feature-item,
     .service-cta,
-    .quick-nav-chevron {
+    .quick-nav-chevron,
+    .quick-nav-panel,
+    .quick-nav-panel-content {
       opacity: 1 !important;
       transform: none !important;
       transition: none !important;
