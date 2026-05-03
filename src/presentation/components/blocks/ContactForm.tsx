@@ -1,4 +1,4 @@
-import { useRef, useState, type FormEvent } from 'react';
+import { useRef, useState } from 'react';
 import { validateContactForm } from '../../../core/application/validators/contact.validator';
 import { NetlifyFormsService } from '../../../core/infrastructure/netlify/forms.service';
 import type { ContactFormData, ContactFormErrors } from '../../../core/domain/types/contact.types';
@@ -38,7 +38,7 @@ export default function ContactForm({
     }
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Formun anormal hızlı gönderimi bot davranışı olabilir.
