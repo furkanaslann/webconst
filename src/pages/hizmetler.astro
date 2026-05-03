@@ -2,6 +2,7 @@
 import BaseLayout from '../presentation/layouts/BaseLayout.astro';
 import Section from '../presentation/components/ui/Section.astro';
 import { services } from '../core/constants/services';
+import { Image } from 'astro:assets';
 
 const groupedServices = [
   {
@@ -116,12 +117,14 @@ const processSteps = [
                           <div class={index % 2 === 1 ? 'md:order-2' : ''}>
                             <div class="service-image-wrap service-image rounded-2xl bg-gradient-to-br from-slate-100 to-slate-50 p-[2px] shadow-[0_8px_30px_rgba(15,23,42,0.12)]">
                               <div class="aspect-[4/3] overflow-hidden rounded-[0.875rem] bg-neutral-100">
-                                <img
+                                <Image
                                   src={service.image}
                                   alt={`${service.title} hizmet görseli`}
                                   class="service-image-photo h-full w-full object-cover"
+                                  width={1200}
+                                  height={900}
+                                  sizes="(max-width: 767px) 100vw, 50vw"
                                   loading="lazy"
-                                  decoding="async"
                                 />
                               </div>
                             </div>

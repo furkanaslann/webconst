@@ -1,10 +1,11 @@
+import type { ImageMetadata } from 'astro';
 import { serviceImageUrls } from './serviceImages';
 
 export interface HeroSlide {
   id: string;
   title: string;
   description: string; // Kart açıklaması
-  image: string;       // işlenmiş asset URL (`src/assets/main/`)
+  image: ImageMetadata; // `src/assets/main/` görsel metadatası
   icon?: string;       // İkon adı (opsiyonel)
   ctaText?: string;
   ctaLink?: string;

@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../presentation/layouts/BaseLayout.astro';
 import Section from '../presentation/components/ui/Section.astro';
+import { Image } from 'astro:assets';
+import hakkimizdaFoto from '../assets/hakkimizda.jpg';
 ---
 
 <BaseLayout
@@ -57,12 +59,15 @@ import Section from '../presentation/components/ui/Section.astro';
         <div
           class="relative aspect-square rounded-2xl overflow-hidden flex items-center justify-center animate-slide-right border border-white/60 shadow-sm"
         >
-          <img
-            src="https://picsum.photos/seed/about-process-bright-site/1200/1200"
+          <Image
+            src={hakkimizdaFoto}
             alt="İnşaat sahasında proje koordinasyon çalışması"
             class="absolute inset-0 h-full w-full object-cover"
-            loading="lazy"
-            decoding="async"
+            width={1200}
+            height={1200}
+            sizes="(max-width: 767px) 100vw, 50vw"
+            loading="eager"
+            fetchpriority="high"
           />
           <div class="absolute inset-0 bg-gradient-to-br from-white/10 via-white/20 to-white/30" aria-hidden="true"></div>
           <div class="relative text-center p-8 md:p-10 bg-white/80 rounded-2xl">

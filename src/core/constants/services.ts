@@ -1,3 +1,4 @@
+import type { ImageMetadata } from 'astro';
 import { hizmetPhotoUrls, serviceImageUrls } from './serviceImages';
 
 export interface Service {
@@ -6,7 +7,7 @@ export interface Service {
   description: string;
   icon: string;
   slug: string;
-  image: string;
+  image: ImageMetadata;
   features: string[];
   category: 'yapisal-teknik' | 'mimari-dekoratif';
 }

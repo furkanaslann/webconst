@@ -11,11 +11,11 @@ import anahtarteslimhiz from '../../assets/hizmetler/mimarivedekoratif/anahtarte
 
 /** Referans kartları ve kategori görselleri */
 export const referenceImageUrls = {
-  guclendirme: [guclendirmeref1.src, guclendirmeref2.src],
-  suYalitim: suyalitimhiz.src,
-  zeminKaplama: [zeminref1.src, zeminref2.src, zeminref3.src],
-  cati: catiyenilemehiz.src,
-  icMekan: alcialcipanhiz.src,
-  anahtarTeslim: anahtarteslimhiz.src,
-  nigdeBorFerbis: nigdeborref.src,
+  guclendirme: [guclendirmeref1, guclendirmeref2],
+  suYalitim: suyalitimhiz,
+  zeminKaplama: [zeminref1, zeminref2, zeminref3],
+  cati: catiyenilemehiz,
+  icMekan: alcialcipanhiz,
+  anahtarTeslim: anahtarteslimhiz,
+  nigdeBorFerbis: nigdeborref,
 } as const;

@@ -1,6 +1,7 @@
 ---
 import Section from '../ui/Section.astro';
 import { Swiper, SwiperWrapper, SwiperSlide, SwiperPagination, SwiperButtonPrev, SwiperButtonNext } from 'astro-swiper';
+import { Image } from 'astro:assets';
 import { heroSlides } from '../../../core/constants/heroSlides';
 
 interface Props {
@@ -106,10 +107,13 @@ const {
               <SwiperSlide>
                 <div class="aspect-[4/3] sm:aspect-[16/10] lg:aspect-video bg-gradient-to-br from-secondary-100 via-neutral-100 to-accent-100 rounded-2xl flex items-center justify-center overflow-hidden relative">
                   <!-- Background Görsel -->
-                  <img
+                  <Image
                     src={slide.image}
                     alt={slide.title}
                     class="absolute inset-0 w-full h-full object-cover"
+                    width={1600}
+                    height={900}
+                    sizes="100vw"
                     loading={index === 0 ? 'eager' : 'lazy'}
                     fetchpriority={index === 0 ? 'high' : 'auto'}
                   />

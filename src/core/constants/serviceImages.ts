@@ -15,21 +15,21 @@ import anahtarTeslimHiz from '../../assets/hizmetler/mimarivedekoratif/anahtarte
 
 /** Ana hero ve özet kartları (`src/assets/main/`) */
 export const serviceImageUrls = {
-  guclendirmeCalismalar: guclendirmeCalismalar.src,
-  suYalitimHizmetler: suYalitimHizmetler.src,
-  zeminKaplamaSistem: zeminKaplamaSistem.src,
-  yapiKimyasallari: yapiKimyasallari.src,
+  guclendirmeCalismalar,
+  suYalitimHizmetler,
+  zeminKaplamaSistem,
+  yapiKimyasallari,
 } as const;
 
 /** Hizmet detay sayfası fotoğrafları (`src/assets/hizmetler/`) */
 export const hizmetPhotoUrls = {
-  guclendirme: guclendirmeHiz.src,
-  suYalitim: suyalitimHiz.src,
-  zeminKaplama: zeminHiz.src,
-  cepheMantolama: cepheMantolamaHiz.src,
-  catiYenileme: catiYenilemeHiz.src,
-  tadilatYenileme: tadilatYenilemeHiz.src,
-  cepheBoyama: cepheBoyamaHiz.src,
-  alciAlcipan: alciAlcipanHiz.src,
-  anahtarTeslim: anahtarTeslimHiz.src,
+  guclendirme: guclendirmeHiz,
+  suYalitim: suyalitimHiz,
+  zeminKaplama: zeminHiz,
+  cepheMantolama: cepheMantolamaHiz,
+  catiYenileme: catiYenilemeHiz,
+  tadilatYenileme: tadilatYenilemeHiz,
+  cepheBoyama: cepheBoyamaHiz,
+  alciAlcipan: alciAlcipanHiz,
+  anahtarTeslim: anahtarTeslimHiz,
 } as const;

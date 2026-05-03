@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 export interface Reference {
   id: string;
   title: string;
@@ -6,7 +9,7 @@ export interface Reference {
   year: string;
   category: string;
   description: string;
-  image?: string;
+  image?: ImageMetadata;
 }
 
 interface Props {
@@ -44,14 +47,14 @@ const slugifyCategory = (category: string) =>
       <div class="reference-card-lift">
         <div class="aspect-video bg-gradient-to-br from-secondary-100 via-neutral-100 to-accent-100 flex items-center justify-center relative overflow-hidden reference-image">
         {ref.image ? (
-          <img
+          <Image
             src={ref.image}
             alt={ref.title}
             class="h-full w-full object-cover"
+            sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
             loading="lazy"
-            decoding="async"
-            width="1200"
-            height="800"
+            width={1200}
+            height={800}
           />
         ) : (
           <div class="text-center p-6">
