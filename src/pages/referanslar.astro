@@ -5,117 +5,30 @@ import References from '../presentation/components/References.astro';
 import type { Reference } from '../presentation/components/References.astro';
 import { referenceImageUrls } from '../core/constants/referenceImages';
 
-const [gucRef1, gucRef2] = referenceImageUrls.guclendirme;
-const [zemRef1, zemRef2, zemRef3] = referenceImageUrls.zeminKaplama;
-
 const references: Reference[] = [
   {
-    id: '1',
-    title: 'Mimarsinan Plaza Güçlendirme',
-    location: 'Kayseri',
-    year: '2023',
-    category: 'Güçlendirme',
-    description: '5 katlı plazanın deprem yönetmeliğine uygun olarak güçlendirilmesi projesi.',
-    image: gucRef1,
-  },
-  {
-    id: '2',
-    title: 'Erciyes Üniversitesi Havuz Yalıtım',
-    location: 'Kayseri',
-    year: '2023',
-    category: 'Su Yalıtım',
-    description: 'Kapalı yüzme havuzunun polyurea sistemle su yalıtım uygulaması.',
-    image: referenceImageUrls.suYalitim,
-  },
-  {
-    id: '3',
-    title: 'Organize Sanayi Epoxy Zemin',
-    location: 'Kayseri',
-    year: '2022',
-    category: 'Zemin Kaplama',
-    description: '5000m² fabrika alanına 3mm kalınlığında epoxy zemin kaplama uygulaması.',
-    image: zemRef1,
-  },
-  {
-    id: '4',
-    title: 'Özel Hastane Teras Yalıtım',
-    location: 'Nevşehir',
-    year: '2022',
-    category: 'Su Yalıtım',
-    description: 'Hastane teras katının sıcak ve soğuk su yalıtımı uygulaması.',
-    image: referenceImageUrls.suYalitim,
-  },
-  {
-    id: '5',
-    title: 'AVM Otopark Zemin Kaplama',
-    location: 'Kayseri',
-    year: '2021',
-    category: 'Zemin Kaplama',
-    description: 'Alışveriş merkezi otoparkına polüretan zemin kaplama ve çizgi uygulaması.',
-    image: zemRef2,
-  },
-  {
-    id: '6',
-    title: 'Site Perde Duvar Yalıtım',
-    location: 'Yozgat',
-    year: '2021',
-    category: 'Su Yalıtım',
-    description: 'LuxSite perde duvarların dranajlı su yalıtım uygulaması.',
-    image: referenceImageUrls.suYalitim,
-  },
-  {
-    id: '7',
-    title: 'Fabrika Güçlendirme Projesi',
-    location: 'Kayseri',
-    year: '2020',
-    category: 'Güçlendirme',
-    description: 'Endüstriyel binanın taşıyıcı sisteminin güçlendirilmesi.',
-    image: gucRef2,
-  },
-  {
-    id: '8',
-    title: 'Spor Salonu Zemin',
-    location: 'Sivas',
-    year: '2020',
-    category: 'Zemin Kaplama',
-    description: 'Kapalı spor salonuna kendinden yaylı zemin kaplama uygulaması.',
-    image: zemRef3,
-  },
-  {
-    id: '9',
-    title: 'Siteler Temel Yalıtım',
-    location: 'Kayseri',
-    year: '2019',
-    category: 'Su Yalıtım',
-    description: 'Toplu konut projesinde temel perde duvar yalıtım uygulaması.',
-    image: referenceImageUrls.suYalitim,
-  },
-  {
     id: '10',
-    title: 'Talas Konut Çatı Yenileme',
+    title: 'Konut Çatı Yenileme',
     location: 'Kayseri',
     year: '2024',
-    category: 'Çatı Sistemleri',
     description: 'Toplu konut bloklarında çatı kaplama, ısı yalıtımı ve yağmur suyu drenaj hattı yenilemesi.',
     image: referenceImageUrls.cati,
   },
   {
-    id: '11',
-    title: 'Kurumsal Ofis İç Mekan Dönüşüm',
-    location: 'Ankara',
-    year: '2024',
-    category: 'İç Mekan Uygulamaları',
-    description: 'Alçıpan bölme, asma tavan, dekoratif boya ve aydınlatma revizyonuyla ofis alanlarının dönüşümü.',
-    image: referenceImageUrls.icMekan,
-  },
-  {
     id: '12',
-    title: 'Niğde Bor Ferbis',
+    title: 'Niğde Ferbis',
     location: 'Niğde',
     year: '2023',
-    category: 'Anahtar Teslim',
     description: 'Mekanik altyapı, ince işler, zemin kaplama ve iç mimari uygulamaların tek elden yönetildiği dönüşüm.',
     image: referenceImageUrls.nigdeBorFerbis,
+  },
+  {
+    id: '13',
+    title: 'Avantgarde Refined Caves of Cappadocia',
+    location: 'Kapadokya',
+    year: '2025',
+    description: 'Doğal dokuya uyumlu taş yüzey uygulamaları, havuz çevresi peyzaj detayları ve ince yapı işlerinin tek elden yürütüldüğü kapsamlı bir projedir.',
+    image: referenceImageUrls.avantgardeCavesCappadocia,
   },
 ];
 ---
@@ -138,71 +51,12 @@ const references: Reference[] = [
         </p>
       </div>
 
-      <div class="mb-8 filter-container animate-on-scroll" style="transition-delay: 100ms">
-        <div class="flex flex-wrap gap-3 justify-center" role="group" aria-label="Referans kategorisi filtreleri">
-          <button
-            class="filter-btn active px-4 py-2 rounded-xl border border-accent-500 bg-accent-500 text-white font-medium transition-all duration-200 hover:bg-accent-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-500 cursor-pointer"
-            data-filter="all"
-            aria-pressed="true"
-          >
-            Tümü
-          </button>
-          <button
-            class="filter-btn px-4 py-2 rounded-xl border border-gray-200 bg-white text-gray-700 font-medium hover:border-accent-300 hover:bg-accent-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-500 cursor-pointer"
-            data-filter="guclendirme"
-            aria-pressed="false"
-          >
-            Güçlendirme
-          </button>
-          <button
-            class="filter-btn px-4 py-2 rounded-xl border border-gray-200 bg-white text-gray-700 font-medium hover:border-accent-300 hover:bg-accent-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-500 cursor-pointer"
-            data-filter="su-yalitim"
-            aria-pressed="false"
-          >
-            Su Yalıtım
-          </button>
-          <button
-            class="filter-btn px-4 py-2 rounded-xl border border-gray-200 bg-white text-gray-700 font-medium hover:border-accent-300 hover:bg-accent-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-500 cursor-pointer"
-            data-filter="zemin-kaplama"
-            aria-pressed="false"
-          >
-            Zemin Kaplama
-          </button>
-          <button
-            class="filter-btn px-4 py-2 rounded-xl border border-gray-200 bg-white text-gray-700 font-medium hover:border-accent-300 hover:bg-accent-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-500 cursor-pointer"
-            data-filter="cati-sistemleri"
-            aria-pressed="false"
-          >
-            Çatı Sistemleri
-          </button>
-          <button
-            class="filter-btn px-4 py-2 rounded-xl border border-gray-200 bg-white text-gray-700 font-medium hover:border-accent-300 hover:bg-accent-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-500 cursor-pointer"
-            data-filter="ic-mekan-uygulamalari"
-            aria-pressed="false"
-          >
-            İç Mekan
-          </button>
-          <button
-            class="filter-btn px-4 py-2 rounded-xl border border-gray-200 bg-white text-gray-700 font-medium hover:border-accent-300 hover:bg-accent-50 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent-500 cursor-pointer"
-            data-filter="anahtar-teslim"
-            aria-pressed="false"
-          >
-            Anahtar Teslim
-          </button>
-        </div>
-      </div>
-
-      <p id="filter-result-info" class="text-center text-sm md:text-base text-gray-600 mb-10 animate-on-scroll" style="transition-delay: 150ms">
+      <p class="text-center text-sm md:text-base text-gray-600 mb-10 animate-on-scroll" style="transition-delay: 150ms">
         {references.length} referans projesi listeleniyor.
       </p>
 
-      <div id="references-grid" class="references-grid">
+      <div class="references-grid">
         <References references={references} />
-      </div>
-
-      <div id="empty-state" class="hidden text-center bg-white border border-dashed border-gray-300 rounded-2xl py-12 px-6 mt-8">
-        <p class="text-lg font-semibold text-gray-800 mb-2">Bu kategoride henüz proje bulunmuyor.</p>
-        <p class="text-gray-600">Lütfen başka bir filtre seçerek tüm projeleri inceleyin.</p>
       </div>
     </div>
   </Section>
@@ -270,57 +124,8 @@ const references: Reference[] = [
     observeScrollAnimations('.animate-scale');
   }
 
-  function initReferenceFilter(): void {
-    const filterButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.filter-btn'));
-    const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-reference-card]'));
-    const resultInfo = document.getElementById('filter-result-info');
-    const emptyState = document.getElementById('empty-state');
-
-    if (filterButtons.length === 0 || cards.length === 0 || !resultInfo || !emptyState) {
-      return;
-    }
-
-    const updateActiveButton = (selectedButton: HTMLButtonElement): void => {
-      filterButtons.forEach((button) => {
-        const isActive = button === selectedButton;
-        button.setAttribute('aria-pressed', String(isActive));
-        button.classList.toggle('bg-accent-500', isActive);
-        button.classList.toggle('text-white', isActive);
-        button.classList.toggle('border-accent-500', isActive);
-        button.classList.toggle('bg-white', !isActive);
-        button.classList.toggle('text-gray-700', !isActive);
-        button.classList.toggle('border-gray-200', !isActive);
-      });
-    };
-
-    const applyFilter = (selectedFilter: string): void => {
-      let visibleCount = 0;
-
-      cards.forEach((card) => {
-        const category = card.dataset.category ?? '';
-        const shouldShow = selectedFilter === 'all' || selectedFilter === category;
-        card.classList.toggle('hidden', !shouldShow);
-        if (shouldShow) {
-          visibleCount += 1;
-        }
-      });
-
-      resultInfo.textContent = `${visibleCount} referans projesi listeleniyor.`;
-      emptyState.classList.toggle('hidden', visibleCount > 0);
-    };
-
-    filterButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const selectedFilter = button.dataset.filter ?? 'all';
-        updateActiveButton(button);
-        applyFilter(selectedFilter);
-      });
-    });
-  }
-
   function initPage(): void {
     initAnimations();
-    initReferenceFilter();
   }
 
   document.addEventListener('DOMContentLoaded', initPage);

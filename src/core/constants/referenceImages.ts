@@ -8,6 +8,7 @@ import suyalitimhiz from '../../assets/hizmetler/yapıveteknik/suyalitimhiz.jpeg
 import catiyenilemehiz from '../../assets/hizmetler/yapıveteknik/catiyenilemehiz.jpeg';
 import alcialcipanhiz from '../../assets/hizmetler/mimarivedekoratif/alcialcipanhiz.jpeg';
 import anahtarteslimhiz from '../../assets/hizmetler/mimarivedekoratif/anahtarteslimhiz.jpeg';
+import avantgardeCavesCappadocia from '../../assets/referanslar/avantgardecavescappadocia.jpeg';
 
 /** Referans kartları ve kategori görselleri */
 export const referenceImageUrls = {
@@ -18,4 +19,5 @@ export const referenceImageUrls = {
   icMekan: alcialcipanhiz,
   anahtarTeslim: anahtarteslimhiz,
   nigdeBorFerbis: nigdeborref,
+  avantgardeCavesCappadocia,
 } as const;

@@ -1,12 +1,13 @@
-import guclendirmeCalismalar from '../../assets/main/guclendirme-calismalar.png';
-import suYalitimHizmetler from '../../assets/main/su-yalitim-hizmetler.png';
-import zeminKaplamaSistem from '../../assets/main/zemin-kaplama-sistem.png';
-import yapiKimyasallari from '../../assets/main/yapi-kimyasallari.png';
+import guclendirmeCalismalar from '../../assets/main/anasayfaguclendirme.jpeg';
+import suYalitimHizmetler from '../../assets/main/ankarasuyalitimi.jpeg';
+import zeminKaplamaSistem from '../../assets/main/anasayfazeminkaplama.jpeg';
+import yapiKimyasallari from '../../assets/hizmetler/yapıveteknik/yapi-kimyasallari.png';
+import anaSayfaAnahtarTeslim from '../../assets/main/anasayfaanahtarteslim.jpeg';
 
 import guclendirmeHiz from '../../assets/hizmetler/yapıveteknik/guclendirmehiz.jpeg';
-import suyalitimHiz from '../../assets/hizmetler/yapıveteknik/suyalitimhiz.jpeg';
-import zeminHiz from '../../assets/hizmetler/yapıveteknik/zeminhiz.jpeg';
-import cepheMantolamaHiz from '../../assets/hizmetler/yapıveteknik/cephemantolamahiz.jpeg';
+import suyalitimHiz from '../../assets/main/ankarasuyalitimi.jpeg';
+import zeminHiz from '../../assets/hizmetler/yapıveteknik/zeminkaplamahiz.jpeg';
+import cepheMantolamaHiz from '../../assets/hizmetler/yapıveteknik/dıscephemantolamahiz.png';
 import catiYenilemeHiz from '../../assets/hizmetler/yapıveteknik/catiyenilemehiz.jpeg';
 import tadilatYenilemeHiz from '../../assets/hizmetler/mimarivedekoratif/tadilatyenilemehiz.jpeg';
 import cepheBoyamaHiz from '../../assets/hizmetler/mimarivedekoratif/cepheboyamahiz.jpeg';
@@ -19,6 +20,7 @@ export const serviceImageUrls = {
   suYalitimHizmetler,
   zeminKaplamaSistem,
   yapiKimyasallari,
+  anaSayfaAnahtarTeslim,
 } as const;
 
 /** Hizmet detay sayfası fotoğrafları (`src/assets/hizmetler/`) */

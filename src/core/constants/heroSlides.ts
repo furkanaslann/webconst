@@ -14,7 +14,7 @@ export interface HeroSlide {
 export const heroSlides: HeroSlide[] = [
   {
     id: '1',
-    title: 'Güçlendirme Çalışmaları',
+    title: 'Güçlendirme',
     description: 'Binalarınızın deprem performansını artırmak için profesyonel güçlendirme çözümleri sunuyoruz.',
     image: serviceImageUrls.guclendirmeCalismalar,
     ctaText: 'Güçlendirme Hizmetini İncele',
@@ -22,7 +22,7 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     id: '2',
-    title: 'Su Yalıtım Hizmetleri',
+    title: 'Su Yalıtımı',
     description: 'Teras, bodrum ve kat aralarında kapsamlı su yalıtım uygulamaları ile yapılarınızı koruyoruz.',
     image: serviceImageUrls.suYalitimHizmetler,
     ctaText: 'Su Yalıtımını İncele',
@@ -30,7 +30,7 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     id: '3',
-    title: 'Zemin Kaplama Sistemleri',
+    title: 'Zemin Kaplama',
     description: 'Endüstriyel ve dekoratif zemin kaplama çözümleri ile uzun ömürlü yüzeyler oluşturuyoruz.',
     image: serviceImageUrls.zeminKaplamaSistem,
     ctaText: 'Zemin Kaplamayı İncele',
@@ -38,10 +38,10 @@ export const heroSlides: HeroSlide[] = [
   },
   {
     id: '4',
-    title: 'Yapı Kimyasalları',
-    description: 'Yüksek kaliteli yapı kimyasalları ile inşaat projelerinizde güvenilir çözümler sunuyoruz.',
-    image: serviceImageUrls.yapiKimyasallari,
-    ctaText: 'Yapı Kimyasallarını İncele',
-    ctaLink: '/hizmetler#yapi-kimyasallari',
+    title: 'Anahtar Teslim',
+    description: 'Projenizi planlamadan teslim aşamasına kadar tek elden yöneterek eksiksiz anahtar teslim çözümler sunuyoruz.',
+    image: serviceImageUrls.anaSayfaAnahtarTeslim,
+    ctaText: 'Anahtar Teslimi İncele',
+    ctaLink: '/hizmetler#anahtar-teslim',
   },
 ];

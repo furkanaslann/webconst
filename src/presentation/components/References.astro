@@ -7,7 +7,6 @@ export interface Reference {
   title: string;
   location: string;
   year: string;
-  category: string;
   description: string;
   image?: ImageMetadata;
 }
@@ -17,23 +16,6 @@ interface Props {
 }
 
 const { references } = Astro.props;
-
-/** Türkçe harfler ASCII slug ile eşleşsin (örn. `ı` regex'te [a-z] dışında kalırdı). */
-const asciiFoldTr = (s: string) =>
-  s
-    .replace(/ğ/g, 'g')
-    .replace(/ü/g, 'u')
-    .replace(/ş/g, 's')
-    .replace(/ı/g, 'i')
-    .replace(/ö/g, 'o')
-    .replace(/ç/g, 'c');
-
-const slugifyCategory = (category: string) =>
-  asciiFoldTr(category.toLocaleLowerCase('tr-TR'))
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
 ---
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -41,7 +23,6 @@ const slugifyCategory = (category: string) =>
     <article
       class="reference-card-shell group bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden"
       style={`--reveal-delay: ${index * 90}ms`}
-      data-category={slugifyCategory(ref.category)}
       data-reference-card
     >
       <div class="reference-card-lift">
@@ -55,7 +36,7 @@ const slugifyCategory = (category: string) =>
             data-lightbox-src={ref.image.src}
             data-lightbox-alt={ref.title}
             data-lightbox-title={ref.title}
-            data-lightbox-meta={`${ref.location} • ${ref.year} • ${ref.category}`}
+            data-lightbox-meta={`${ref.location} • ${ref.year}`}
             data-lightbox-description={ref.description}
             aria-label={`${ref.title} görselini büyüt`}
           >
@@ -74,7 +55,7 @@ const slugifyCategory = (category: string) =>
             <svg class="w-16 h-16 text-primary-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
             </svg>
-            <p class="text-sm text-primary-600 font-medium">{ref.category}</p>
+            <p class="text-sm text-primary-600 font-medium">{ref.title}</p>
           </div>
         )}
         <div class="absolute top-4 right-4 bg-accent-500 text-white px-3 py-1 rounded-full text-sm font-medium">
